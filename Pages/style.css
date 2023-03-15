@@ -25,13 +25,16 @@
 .profile {
   display: flex;
   padding-top: 40px;
-  grid-template: auto;
+  align-items: center;
 }
 
 .profile__info {
   display: grid;
-  flex: 0 0 282;
   grid-template-columns: minmax(auto, 373px);
+  grid-template-areas:
+    "title button"
+    "description description";
+  grid-gap: 10px 17px;
 }
 
 .profile__edit-button {
@@ -39,6 +42,12 @@
   height: 24px;
   width: 24px;
   grid-area: button;
+  align-self: center;
+  border: 1px solid #fff;
+}
+
+.profile__edit-button:hover {
+  opacity: 0.6;
 }
 
 .profile__add-button {
@@ -47,9 +56,16 @@
   height: 50px;
   align-items: center;
   margin-left: auto;
+  border: 1px solid #fff;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
 }
 
 .profile__title {
+  font-family: Inter, sans-serif;
+  font-weight: 500px;
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
@@ -58,6 +74,8 @@
 }
 
 .profile__description {
+  font-family: Inter, sans-serif;
+  font-weight: 400px;
   font-size: 18px;
   line-height: 22px;
   font-weight: 400;
@@ -98,7 +116,7 @@
 
 .card__image {
   width: 282px;
-  max-height: 282px;
+  height: 282px;
 }
 
 .card__description {
@@ -111,8 +129,44 @@
   justify-content: space-between;
 }
 
+.card__title {
+  font-family: Inter, sans-serif;
+  font-weight: 900px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .card__like-button {
   background: transparent url(/Images/Like.svg) center no-repeat;
   width: 21px;
   height: 18px;
+  border: none;
+}
+
+.card__like-button:hover {
+  opacity: 0.5;
+}
+
+.footer {
+  display: flex;
+  color: #545454;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+}
+
+.footer__logo {
+  margin: 0;
+}
+
+@media screen and (max-width: 1100px) {
+}
+
+@media screen and (max-width: 480px) {
+  .profile {
+    flex-direction: column;
+  }
+  .footer {
+    padding-left: 19px;
+  }
 }
