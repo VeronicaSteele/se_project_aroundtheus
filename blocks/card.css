@@ -1,12 +1,11 @@
 .cards {
-  /* font: ;*/
   margin-top: 30px;
 }
 
 .card__list {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, 282px);
+  grid-template-columns: repeat(3, 282px);
   grid-gap: 20px 17px;
   padding: 0;
   margin: 0;
@@ -52,4 +51,18 @@
 
 .card__like-button:hover {
   opacity: 0.5;
+}
+@media screen and (max-width: 978px) {
+  .card__list {
+    grid-template-columns: repeat(2, 282px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cards {
+    padding: 0 20px;
+  }
+  .card__list {
+    grid-template-columns: repeat(1, 282px);
+  }
 }
