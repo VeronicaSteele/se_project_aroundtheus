@@ -19,7 +19,9 @@
 }
 @media screen and (max-width: 978px) {
 }
-@media screen and (max-width: 780px) @media screen and (max-width: 480px) {
+@media screen and (max-width: 780px) {
+}
+@media screen and (max-width: 480px) {
   .page__section {
     margin: 0;
   }
