@@ -12,10 +12,6 @@
   height: 33px;
   object-fit: contain;
 }
-@media screen and (max-width: 978px) {
-}
-@media screen and (max-width: 780px) {
-}
 
 @media screen and (max-width: 480px) {
   .header {
