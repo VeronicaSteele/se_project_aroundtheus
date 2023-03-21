@@ -2,7 +2,7 @@
   margin-top: 30px;
 }
 
-.card__list {
+.card {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(3, 282px);
@@ -11,7 +11,7 @@
   margin: 0;
 }
 
-.card {
+.card__list {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -53,20 +53,20 @@
   opacity: 0.5;
 }
 @media screen and (max-width: 978px) {
-  .card__list {
+  .card {
     grid-template-columns: repeat(2, 282px);
   }
 }
 @media screen and (max-width: 653px) {
-  .card__list {
-    grid-template-columns: repeat(1, 282px);
+  .card {
+    grid-template-columns: repeat(, 282px);
   }
 }
 @media screen and (max-width: 480px) {
   .cards {
-    padding: 0;
+    padding: 0 20px;
   }
-  .card__list {
+  .card {
     grid-template-columns: repeat(1, 282px);
   }
 }
