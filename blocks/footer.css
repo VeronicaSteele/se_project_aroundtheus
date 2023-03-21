@@ -7,6 +7,13 @@
   justify-content: flex-start;
 }
 
-.footer__logo {
+.footer__copyright {
   margin: 0;
+}
+
+@media screen and (max-width: 480px) {
+  .footer__copyright {
+    padding-left: 19px;
+    padding-right: 19px;
+  }
 }
