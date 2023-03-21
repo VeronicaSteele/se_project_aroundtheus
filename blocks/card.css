@@ -57,7 +57,11 @@
     grid-template-columns: repeat(2, 282px);
   }
 }
-
+@media screen and (max-width: 653px) {
+  .card__list {
+    grid-template-columns: repeat(1, 282px);
+  }
+}
 @media screen and (max-width: 480px) {
   .cards {
     padding: 0 20px;
