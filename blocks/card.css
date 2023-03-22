@@ -40,6 +40,8 @@
   white-space: nowrap;
   overflow: hidden;
   width: 219px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .card__like-button {
