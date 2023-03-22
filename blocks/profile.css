@@ -47,7 +47,7 @@
 .profile__title {
   font-family: Inter, sans-serif;
   font-size: 42px;
-  line-height: 48px;
+  line-height: 27px;
   font-weight: 500;
   grid-area: title;
   margin: 0;
@@ -81,7 +81,7 @@
     flex-direction: column;
     align-items: center;
     padding-top: 26px;
-    grid-gap: 10px 0px;
+    grid-gap: 0px;
   }
 
   .profile__title {
