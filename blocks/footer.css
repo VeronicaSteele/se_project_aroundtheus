@@ -5,6 +5,12 @@
   font-weight: 400;
   font-size: 18px;
   justify-content: flex-start;
+  line-height: 22px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  max-width: 880px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .footer__copyright {
@@ -13,7 +19,10 @@
 
 @media screen and (max-width: 480px) {
   .footer__copyright {
-    padding-left: 19px;
-    padding-right: 19px;
+    line-height: 17px;
+    padding: 36px 19px;
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 400;
   }
 }

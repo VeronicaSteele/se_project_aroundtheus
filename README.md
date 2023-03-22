@@ -1,23 +1,7 @@
-# Project 3: Around The U.S.
+Around The US - Project 3
+This design incorporates 6 photo cards and location names in a social media setup.Using HTML and CSS, the design incorporates Grid elements and media queries within a BEM structure. It is responsive to dimensions between 320-1280 px.
+![My Image](./images/Laptop.png)
+![My Image](./images/Tablet.png)
+![My Image](./images/Phone.png)
 
-### Overview
-
-- Intro
-- Figma
-- Images
-
-**Intro**
-
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.
-
-**Figma**
-
-- [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
-
-**Images**
-
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
-
-Design incorporates Grid elements and media queries within a BEM structure.
-
-Good luck and have fun!
+Github pages may be used to launch this design. https://pages.github.com/

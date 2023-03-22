@@ -1,8 +1,8 @@
-.cards {
+.card {
   margin-top: 30px;
 }
 
-.card {
+.card__item {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(3, 282px);
@@ -36,14 +36,14 @@
 
 .card__title {
   font-family: Inter, sans-serif;
-  font-weight: 900px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  width: 219px;
 }
 
 .card__like-button {
-  background: transparent url(/Images/Like.svg) center no-repeat;
+  background: transparent url(../images/Like.svg) center no-repeat;
   width: 21px;
   height: 18px;
   border: none;
@@ -51,19 +51,15 @@
 
 .card__like-button:hover {
   opacity: 0.5;
+  cursor: pointer;
 }
 @media screen and (max-width: 978px) {
-  .card {
+  .card__item {
     grid-template-columns: repeat(2, 282px);
   }
 }
 @media screen and (max-width: 653px) {
-  .card {
+  .card__item {
     grid-template-columns: repeat(1, 282px);
-  }
-}
-@media screen and (max-width: 480px) {
-  .cards {
-    padding: 0 20px;
   }
 }
