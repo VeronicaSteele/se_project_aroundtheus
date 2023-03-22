@@ -4,4 +4,4 @@ This design incorporates 6 photo cards and location names in a social media setu
 ![My Image](./images/Tablet.png)
 ![My Image](./images/Phone.png)
 
-Github pages may be used to launch this design. https://pages.github.com/
+Github pages may be used to launch this design. https://veronicasteele.github.io/se_project_aroundtheus/
