@@ -13,6 +13,11 @@
     "description description";
   grid-gap: 10px 17px;
 }
+
+.profile__name {
+  display: flex;
+}
+
 .profile__align {
   display: flex;
 }
@@ -54,6 +59,8 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  width: 373px;
+  padding-right: 18px;
 }
 
 .profile__description {
@@ -65,6 +72,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  padding-top: 6px;
 }
 
 .profile__img {
@@ -84,9 +92,15 @@
     grid-gap: 0px;
   }
 
+  .profile__name {
+    max-width: 282px;
+    margin: auto;
+  }
+
   .profile__title {
     font-size: 22px;
     text-align: center;
+    padding: 0;
   }
   .profile__add-button {
     display: flex;
