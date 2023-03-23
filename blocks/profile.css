@@ -3,7 +3,6 @@
   padding-top: 40px;
   padding-bottom: 47px;
   align-items: center;
-  max-width: ;
 }
 
 .profile__info {
@@ -54,7 +53,7 @@
 .profile__title {
   font-family: Inter, sans-serif;
   font-size: 42px;
-  line-height: 48x;
+  line-height: 48px;
   font-weight: 500;
   grid-area: title;
   margin: 0;
