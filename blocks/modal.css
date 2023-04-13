@@ -58,11 +58,11 @@
 }
 .modal__form {
   height: 48px;
-  width: 358px;
+  width: 100%;
 }
 .modal__form-title {
   height: 14px;
-  width: 358px;
+  width: 100%;
   border: 1px solid #000;
   padding-top: 15px;
   padding-bottom: 19px;
@@ -72,10 +72,13 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 .modal__form-description {
   height: 14px;
-  width: 358px;
+  width: 100%;
   padding-top: 16px;
   padding-bottom: 18px;
   border: 1px solid #000;
@@ -85,10 +88,13 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 .modal__button {
   height: 50px;
-  width: 358px;
+  width: 100%;
   background-color: black;
   color: white;
   border-radius: 2px;
@@ -105,5 +111,18 @@
   .modal__close {
     width: 26px;
     height: 26px;
+    top: -45px;
+    right: -5px;
+  }
+  .modal__container {
+    width: 282px;
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+  .modal__heading {
+    width: 100%;
+  }
+  .modal__form-title {
+    text-align: start;
   }
 }
