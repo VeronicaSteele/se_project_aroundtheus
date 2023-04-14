@@ -11,7 +11,7 @@
   padding: 0 19px;
 }
 
-.modal__opened {
+.modal_opened {
   display: flex;
 }
 .modal__overlay {
@@ -104,7 +104,6 @@
   font-size: 18px;
   line-height: 22px;
   text-align: center;
-  margin-bottom: 37px;
 }
 
 @media screen and (max-width: 630px) {
@@ -116,13 +115,22 @@
   }
   .modal__container {
     width: 282px;
+    height: 322px;
     padding-left: 19px;
     padding-right: 19px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .modal__form {
+    font-size: 14px;
+    line-height: 17px;
   }
   .modal__heading {
     width: 100%;
+    font-size: 18px;
+    line-height: 22px;
   }
-  .modal__form-title {
-    text-align: start;
+  .modal__button {
+    font-size: 14px;
   }
 }
