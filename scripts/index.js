@@ -24,7 +24,7 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
-
+//                    Constants                                     //
 const profileEditBtn = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditClosebtn = profileEditModal.querySelector(
@@ -39,6 +39,7 @@ const profileDescriptionInput = document.querySelector(
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardTemplate = document.querySelector("#card-template");
 const cardListEl = document.querySelector(".card__item");
+const addNewCardButton = document.querySelector(".profile__add-button");
 
 /*                    Functions                                  */
 function getCardElement(cardData) {
@@ -50,8 +51,12 @@ function getCardElement(cardData) {
   cardImageEl.alt = cardData.name;
   return cardElement;
 }
-function closePopup() {
-  profileEditModal.classList.remove("modal_opened");
+function closeModalS(modal) {
+  modal.classList.remove("modal_opened");
+}
+
+function openModal(modal) {
+  modal.classList.add("modal__opened");
 }
 
 /*                    Event Handlers                            */
@@ -65,6 +70,13 @@ function handleProfileEditSubmit(e) {
 
 /*                     Event Listeners                          */
 
+ profileEditBtn.addEventListener("click", () => {
+profileTitleInput.value = profileTitle.textContent.trim();
+profileDescriptionInput.value = profileDescription.textContent.trim();
+profileEditModal.classList.add("modal_opened");
+});
+profileEditBtn.addEventListener("click", ()=>openModal{profileEditModal});
+
 profileEditBtn.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent.trim();
   profileDescriptionInput.value = profileDescription.textContent.trim();
@@ -72,8 +84,8 @@ profileEditBtn.addEventListener("click", () => {
 });
 
 profileEditClosebtn.addEventListener("click", closePopup);
-
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+addNewCardButton.addEventListener("click", openModal);
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
