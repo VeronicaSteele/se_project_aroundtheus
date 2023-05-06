@@ -40,6 +40,7 @@ const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardTemplate = document.querySelector("#card-template");
 const cardListEl = document.querySelector(".card__item");
 const addNewCardButton = document.querySelector(".profile__add-button");
+const addNewCardModal = document.querySelector("#add-card-modal");
 
 /*                    Functions                                  */
 function getCardElement(cardData) {
@@ -80,10 +81,9 @@ profileEditClosebtn.addEventListener("click", () =>
   closeModals(profileEditModal)
 );
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-addNewCardButton.addEventListener("click", openModal);
+addNewCardButton.addEventListener("click", () => openModal(addNewCardModal));
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
 });
-addNewCardButton.addEventListener("click", openModal);
