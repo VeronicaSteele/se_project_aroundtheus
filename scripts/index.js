@@ -38,6 +38,10 @@ const cardTemplate = document.querySelector("#card-template");
 const cardListEl = document.querySelector(".card__item");
 const addNewCardModal = document.querySelector("#add-card-modal");
 const addCardFormElement = addNewCardModal.querySelector("#add-card-form");
+const cardTitleInput = addCardFormElement.querySelector(
+  ".modal__input_type_title"
+);
+const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
 
 // Buttons//
 
@@ -55,6 +59,10 @@ function getCardElement(cardData) {
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
+  const deleteButton = cardElement.querySelector(".card__delete-button");
+  deleteButton.addEventListener("click", () => {
+    deleteButton.classList.remove(".card");
+  });
   // find delete button
   // add event listener to the delete button
   // cardElementt.remove();
@@ -72,12 +80,6 @@ function getCardElement(cardData) {
 
   return cardElement;
 }
-
-const cardTitleInput = addCardFormElement.querySelector(
-  ".modal__input_type_title"
-);
-
-const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
 
 function closeModals(modal) {
   modal.classList.remove("modal_opened");

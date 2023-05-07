@@ -60,6 +60,12 @@
   opacity: 0.5;
   cursor: pointer;
 }
+.card__delete-button {
+  background-image: url("../images/Trash\ inactive.svg");
+}
+.card__delete-button_active {
+  background-image: url("../images/Trash\ active.svg");
+}
 @media screen and (max-width: 978px) {
   .card__item {
     grid-template-columns: repeat(2, 282px);
