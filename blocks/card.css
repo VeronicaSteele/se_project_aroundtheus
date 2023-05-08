@@ -17,6 +17,7 @@
   border-radius: 10px;
   list-style: none;
   overflow: hidden;
+  position: relative;
 }
 
 .card__image {
@@ -61,14 +62,19 @@
   cursor: pointer;
 }
 .card__delete-button {
-  background-image: url("../images/Trash\ inactive.svg");
   width: 18px;
-  height: 19px;
+  height: 18px;
+  border: none;
   position: absolute;
-  justify-content: flex-end;
+  top: 24px;
+  right: 16px;
+  background: url("../images/delete-icon.svg") transparent center no-repeat;
 }
 .card__delete-button_active {
-  background-image: url("../images/Trash\ active.svg");
+  background-image: url("../images/delete-icon.svg");
+}
+.card__delete-button:hover {
+  color: rgba(255, 255, 255, 0.6);
 }
 @media screen and (max-width: 978px) {
   .card__item {
