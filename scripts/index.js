@@ -43,7 +43,7 @@ const addCardFormElement = addNewCardModal.querySelector("#add-card-form");
 const cardTitleInput = addCardFormElement.querySelector(
   ".modal__input_type_title"
 );
-const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
+const cardUrlInput = addCardFormElement.querySelector(".modal__form_type_url");
 const previewImageModal = document.querySelector("#view-card-modal");
 const imagePreview = previewImageModal.querySelector(".modal__popup_image");
 const imageCaption = previewImageModal.querySelector(".image-preview__heading");
