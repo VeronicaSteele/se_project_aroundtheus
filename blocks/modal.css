@@ -120,7 +120,7 @@
   font-size: 12px;
   line-height: 15px;
 }
-.image-preview__heading {
+.modal__image-container_popup {
   width: 291px;
   height: 12px;
   padding-top: 10px;
