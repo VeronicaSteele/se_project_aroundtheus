@@ -23,6 +23,7 @@
 .card__image {
   width: 282px;
   height: 282px;
+  cursor: pointer;
 }
 
 .card__description {
@@ -52,6 +53,7 @@
   width: 21px;
   height: 18px;
   border: none;
+  transition: 0.3s;
 }
 .card__like-button_active {
   background-image: url("../images/like-active\ \(1\).svg");
@@ -68,6 +70,7 @@
   top: 24px;
   right: 16px;
   background: url("../images/delete-icon.svg") transparent center no-repeat;
+  cursor: pointer;
 }
 
 .card__delete-button:hover {

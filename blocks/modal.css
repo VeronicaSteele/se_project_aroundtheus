@@ -49,11 +49,13 @@
   right: -45px;
   cursor: pointer;
 }
+.modal__close:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
 .modal__heading {
-  width: 330px;
-  height: 23px;
+  width: 100%;
   color: black;
-  font-family: "Inter";
+  font-family: "Inter", serif;
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
@@ -65,14 +67,14 @@
   height: 48px;
   width: 100%;
 }
-.modal__form-title {
+.modal__input {
   height: 14px;
   width: 100%;
   border: 1px solid #000;
   padding-top: 15px;
   padding-bottom: 19px;
   margin-bottom: 16px;
-  font-family: "Inter";
+  font-family: "Inter", serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -81,14 +83,14 @@
   border-left: none;
   border-right: none;
 }
-.modal__form-description {
+.modal__input:last-of-type {
   height: 14px;
   width: 100%;
   padding-top: 16px;
   padding-bottom: 18px;
   border: 1px solid #000;
   margin-bottom: 43px;
-  font-family: "Inter";
+  font-family: "Inter", serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -103,12 +105,16 @@
   background-color: black;
   color: white;
   border-radius: 2px;
-  font-family: "Inter";
+  font-family: "Inter", serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
+  border: none;
+}
+.modal__button:hover {
+  cursor: pointer;
 }
 .popup__image {
   max-height: 75vh;
@@ -121,10 +127,15 @@
   line-height: 15px;
 }
 .modal__image-container_heading {
-  width: 291px;
+  width: 100%;
   height: 12px;
   padding-top: 10px;
   margin: 0;
+}
+@media screen and (max-width: 920px) {
+  .modal__image-container {
+    width: 650px;
+  }
 }
 @media screen and (max-width: 630px) {
   .modal__close {
@@ -133,11 +144,11 @@
     top: -45px;
     right: -5px;
   }
-  .modal__container {
+
+  .modal__container,
+  .modal__image-container {
     width: 282px;
     height: 322px;
-    padding-left: 19px;
-    padding-right: 19px;
     padding-top: 0;
     padding-bottom: 0;
   }
