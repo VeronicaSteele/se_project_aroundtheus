@@ -121,6 +121,7 @@
   position: relative;
   font-size: 12px;
   line-height: 15px;
+  height: 80vh;
 }
 .modal__image-container_heading {
   width: 100%;

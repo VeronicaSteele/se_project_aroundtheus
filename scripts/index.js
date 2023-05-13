@@ -40,7 +40,7 @@ const cardTemplate = document
 const cardListEl = document.querySelector(".card__item");
 const addNewCardModal = document.querySelector("#add-card-modal");
 const addCardFormElement = addNewCardModal.querySelector("#add-card-form");
-const cardTitleInput = addCardFormElement.querySelector(".modal__input");
+const cardTitleInput = addCardFormElement.querySelector("#add-card-form-input");
 const cardUrlInput = addCardFormElement.querySelector(
   "#add-card-description-input"
 );
@@ -86,7 +86,7 @@ function getCardElement(cardData) {
     imageCaption.textContent = cardData.name;
   });
 
-  cardTitleEl.textContent = cardData.name.trim();
+  cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
 
@@ -103,9 +103,9 @@ function openModal(modal) {
   modal.classList.add("modal_opened");
 }
 
-function renderCard(cardData, wrapper) {
+function renderCard(cardData) {
   const cardElement = getCardElement(cardData);
-  cardsWrap.prepend(getCardElement(cardElement));
+  cardListEl.prepend(cardElement);
 }
 
 // Form Listeners
@@ -125,7 +125,7 @@ function handleAddCardFormSubmit(e) {
   e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
-  renderCard(name, link, cardsWrap);
+  renderCard({ name, link });
   closeModal(addNewCardModal);
   addCardFormElement.reset();
 }
