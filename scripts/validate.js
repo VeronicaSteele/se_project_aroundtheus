@@ -1,37 +1,72 @@
 // enabling validation by calling enableValidation()
 // pass all the settings on call
 // popup class???
-
-function setEventListeners(formEl, options) {
-  const { inputSelector } = options; //What is this???
-  const inputEls = [...formEl.querySelectorAll(inputSelector)];
-  inputEls.forEach((inputEl) => {
-    //???
-    inputEl.addEventListener("input");
+const errorMessage = "Please fill out this field";
+const showInputError = (
+  formElement,
+  inputElement,
+  errorMessage,
+  { errorClass, inputErrorClass }
+) => {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  inputElement.classList.add(inputErrorClass);
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add(errorClass);
+};
+const hideInputError = (
+  formElement,
+  inputElement,
+  { errorClass, inputErrorClass }
+) => {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`); //profile-input-error;
+  inputElement.classList.remove(inputErrorClass);
+  errorElement.textContent = errorMessage;
+  errorElement.classList.remove(errorClass);
+};
+const checkInputValidity = (formElement, inputElement, config) => {
+  if (!inputElement.validity.valid) {
+    //show input error
+    showInputError(
+      formElement,
+      inputElement,
+      inputElement.validationMessage,
+      config
+    );
+  } else {
+    //hide input error
+    hideInputError(formElement, inputElement, config);
+  }
+};
+const setEventListeners = (formElement, config) => {
+  const inputList = [...formElement.querySelectorAll(config.inputSelector)];
+  const buttonElement = formElement.querySelector(config.submitButtonSelector);
+  // create loop for each input & check validation
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener("input", () => {
+      // create loop for each input & check validation
+      checkInputValidity(formElement, inputElement, config);
+    });
   });
-}
+  // toggle button state submit (grey or not allowed)
+};
 
-function enableValidation() {
-  const formEls = [...document.querySelectorAll(options.formSelector)];
-  formEls.forEach((formEl) => {
-    formEl.addEventListener("submit", () => {
+const enableValidation = (config) => {
+  const formList = [...document.querySelectorAll(config.formSelector)];
+  formList.forEach((formElement) => {
+    formElement.addEventListener("submit", (e) => {
       e.preventDefault();
     });
 
-    // look for all inputs inside of form
-    // loop through all inputs to make sure they're valid
-    // if input is invalid, get validation message
-    // add error class to input
-    // display error message
     // disable button
 
     // if all inputs are valid
     // enable button
     // reset error messages
+    setEventListeners(formElement, config);
   });
-}
+};
 
-setEventListeners(formElement, options);
+//setEventListeners(formElement, options);
 //Where did FormElement come from???
 
 const config = {

@@ -129,6 +129,9 @@
   padding-top: 10px;
   margin: 0;
 }
+.modal__error_visible {
+  opacity: 1;
+}
 .modal__error {
   font-weight: 400;
   font-size: 12px;
