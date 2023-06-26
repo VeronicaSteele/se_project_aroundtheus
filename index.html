@@ -40,7 +40,6 @@
               Explorer
             </p>
           </div>
-
           <button class="profile__add-button" type="button"></button>
         </section>
         <section class="card page__section">
@@ -60,13 +59,16 @@
           type="button"
         ></button>
         <h2 class="modal__heading">Edit Profile</h2>
-        <form class="modal__form">
+        <form class="modal__form" id="profile-edit-form">
           <input
             type="text"
             name="title"
             class="modal__input"
             placeholder="Name"
             id="profile-title-input"
+            minlength="2"
+            maxlength="40"
+            required
           />
           <input
             type="text"
@@ -74,6 +76,9 @@
             class="modal__input"
             placeholder="About"
             id="profile-description-input"
+            minlength="2"
+            maxlength="200"
+            required
           />
           <button class="modal__button" type="submit">Save</button>
         </form>
