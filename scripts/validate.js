@@ -1,6 +1,4 @@
-// enabling validation by calling enableValidation()
 // pass all the settings on call
-// popup class???
 const errorMessage = "Please fill out this field";
 const showInputError = (
   formElement,
@@ -50,14 +48,15 @@ const setEventListeners = (formElement, config) => {
   // toggle button state submit (grey or not allowed)
 };
 
-const enableValidation = (config) => {
-  const formList = [...document.querySelectorAll(config.formSelector)];
-  formList.forEach((formElement) => {
-    formElement.addEventListener("submit", (e) => {
-      e.preventDefault();
-    });
-
-    // disable button
+function enableValidation(config) {
+	const formElements = [...document.querySelectorAll(config.formSelector)];
+	formElements.forEach((formElements) => {
+		formElements.addEventListener("submit", (e) => {
+			e.preventDefault();
+		});
+		setEventListeners(formElements, config);
+	});
+}
 
     // if all inputs are valid
     // enable button
@@ -67,7 +66,6 @@ const enableValidation = (config) => {
 };
 
 //setEventListeners(formElement, options);
-//Where did FormElement come from???
 
 const config = {
   formSelector: ".modal__form",
