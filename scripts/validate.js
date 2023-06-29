@@ -8,7 +8,7 @@ const showInputError = (
 ) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(inputErrorClass);
-  errorElement.textContent = errorMessage;
+  //errorElement.textContent = errorMessage;
   errorElement.classList.add(errorClass);
 };
 const hideInputError = (
@@ -18,7 +18,7 @@ const hideInputError = (
 ) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`); //profile-input-error;
   inputElement.classList.remove(inputErrorClass);
-  errorElement.textContent = errorMessage;
+
   errorElement.classList.remove(errorClass);
 };
 const checkInputValidity = (formElement, inputElement, config) => {
@@ -35,6 +35,20 @@ const checkInputValidity = (formElement, inputElement, config) => {
     hideInputError(formElement, inputElement, config);
   }
 };
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+};
+const toggleButtonState = (inputList, buttonElement, config) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add(config.inactiveButtonClass);
+    buttonElement.disabled = true;
+  } else {
+    buttonElement.classList.remove(config.inactiveButtonClass);
+    buttonElement.disabled = false;
+  }
+};
 const setEventListeners = (formElement, config) => {
   const inputList = [...formElement.querySelectorAll(config.inputSelector)];
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
@@ -46,22 +60,16 @@ const setEventListeners = (formElement, config) => {
     });
   });
   // toggle button state submit (grey or not allowed)
+  toggleButtonState(inputList, buttonElement, config);
 };
 
-function enableValidation(config) {
-	const formElements = [...document.querySelectorAll(config.formSelector)];
-	formElements.forEach((formElements) => {
-		formElements.addEventListener("submit", (e) => {
-			e.preventDefault();
-		});
-		setEventListeners(formElements, config);
-	});
-}
-
-    // if all inputs are valid
-    // enable button
-    // reset error messages
-    setEventListeners(formElement, config);
+const enableValidation = (config) => {
+  const formElements = [...document.querySelectorAll(config.formSelector)];
+  formElements.forEach((formElements) => {
+    formElements.addEventListener("submit", function (e) {
+      e.preventDefault();
+    });
+    setEventListeners(formElements, config);
   });
 };
 
