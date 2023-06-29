@@ -132,6 +132,10 @@
 .modal__error_visible {
   opacity: 1;
 }
+.modal__button_disabled {
+  background-color: white;
+  color: gray;
+}
 .modal__error {
   font-weight: 400;
   font-size: 12px;
