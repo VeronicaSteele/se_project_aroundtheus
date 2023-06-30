@@ -95,19 +95,28 @@ function getCardElement(cardData) {
 previewImageModalCloseButton.addEventListener("click", () =>
   closeModal(previewImageModal)
 );
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-}
-
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-}
 
 function renderCard(cardData) {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
 }
 
+function handleEscKey(evt) {
+  if (evt.key === "Escape") {
+    const activeModal = document.querySelector(".modal_opened");
+    closeModal(activeModal);
+  }
+}
+
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+  document.addEventListener("keyup", handleEscKey);
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keyup", handleEscKey);
+}
 // Form Listeners
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
@@ -128,6 +137,9 @@ function handleAddCardFormSubmit(e) {
   renderCard({ name, link });
   closeModal(addNewCardModal);
   addCardFormElement.reset();
+  const createButton = elementAddForm.querySelector(".modal__button");
+  createButton.classList.add("modal__button_disabled");
+  createButton.disabled = true;
 }
 /*                     Event Listeners                          */
 

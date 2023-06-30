@@ -65,13 +65,12 @@
             name="title"
             class="modal__input"
             placeholder="Name"
-            id="profile-edit-input"
+            id="title-input"
             minlength="2"
             maxlength="40"
             required
           />
-          <span class="modal__input_type_error" id="modal__input_type_error"
-            >Please fill out this field.</span
+          <span class="modal__error" id="title-input_error"></span
           >
           <input
             type="text"
@@ -83,10 +82,10 @@
             maxlength="200"
             required
           />
-          <span class="modal__input_type_error" id="profile-description-input-error"
-            >Please fill out this field.</span
+          <span class="modal__error" id="profile-description-input-error"
+            ></span
           >
-          <button class="modal__button" type="submit">Save</button>
+          <button class="modal__button" disabled type="submit">Save</button>
         </form>
       </div>
       <div class="modal__overlay"></div>
@@ -106,24 +105,24 @@
             type="text"
             class="modal__input"
             placeholder="Title"
-            id="add-card-form-input"
+            id="add-input"
             minlength="1"
             maxlength="30"
             required
           />
-          <span class="modal__input_type_error" id="add-card-input-error"
-            >Please fill out this field.</span
+          <span class="modal__error" id="add--"
+            ></span
           >
           <input
             type="url"
             name="url"
             class="modal__input"
             placeholder="Image URL"
-            id="add-card-description-input"
+            id="url-input"
             required
           />
-          <span class=modal__input_type_error" id="url-input-error"
-            >Please enter a web address.</span
+          <span class=modal__error" id="url-input-error"
+            ></span
           >
           <button class="modal__button" type="submit">Save</button>
         </form>
