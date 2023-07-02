@@ -93,6 +93,11 @@
   border-left: none;
   border-right: none;
 }
+/*.modal__add {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}*/
 .modal__button {
   height: 50px;
   width: 100%;
