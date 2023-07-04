@@ -39,10 +39,8 @@ const cardTemplate = document
 const cardListEl = document.querySelector(".card__item");
 const addNewCardModal = document.querySelector("#add-card-modal");
 const addCardFormElement = addNewCardModal.querySelector("#add-card-form");
-const cardTitleInput = addCardFormElement.querySelector("#add-card-form-input");
-const cardUrlInput = addCardFormElement.querySelector(
-  "#add-card-description-input"
-);
+const cardTitleInput = addCardFormElement.querySelector("#modal-add");
+const cardUrlInput = addCardFormElement.querySelector("#url-input");
 const previewImageModal = document.querySelector("#view-card-modal");
 const imagePreview = previewImageModal.querySelector(
   ".modal__image-container_popup"
