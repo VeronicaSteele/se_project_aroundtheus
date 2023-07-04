@@ -49,7 +49,7 @@ const imageCaption = previewImageModal.querySelector(
   ".modal__image-container_heading"
 );
 
-// Buttons//
+// Buttons--this is my change//
 
 const addNewCardButton = document.querySelector(".profile__add-button");
 const profileModalCloseButton = profileEditModal.querySelector(".modal__close");
