@@ -113,7 +113,7 @@ function handleEscKey(evt) {
 
 function handlePopupClose(evt) {
   if (
-    evt.target.classList.contains("modal") ||
+    evt.target.classList.contains("modal__overlay") ||
     evt.target.classList.contains("modal__close")
   ) {
     closeModal(evt.currentTarget);
