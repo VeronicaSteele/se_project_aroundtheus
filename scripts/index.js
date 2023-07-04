@@ -134,7 +134,7 @@ function handleAddCardFormSubmit(e) {
   renderCard({ name, link });
   closeModal(addNewCardModal);
   addCardFormElement.reset();
-  const createButton = elementAddForm.querySelector(".modal__button");
+  const createButton = addCardFormElement.querySelector(".modal__button");
   createButton.classList.add("modal__button_disabled");
   createButton.disabled = true;
 }
