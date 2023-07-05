@@ -154,7 +154,7 @@ function handleAddCardFormSubmit(e) {
 
 profileEditBtn.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent.trim();
-  profileDescriptionInput.value = profileDescriptionInput.textContent.trim();
+  profileDescriptionInput.value = profileDescription.textContent.trim();
   openModal(profileEditModal);
 });
 
