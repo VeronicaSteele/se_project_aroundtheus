@@ -95,10 +95,6 @@ function getCardElement(cardData) {
 
   return cardElement;
 }
-//previewImageModalCloseButton.addEventListener("click", () =>
-//closeModal(previewImageModal)
-//);
-
 function renderCard(cardData) {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
@@ -161,13 +157,7 @@ profileEditBtn.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
-//profileEditClosebtn.addEventListener("click", () =>
-//closeModal(profileEditModal)
-//);
 addNewCardButton.addEventListener("click", () => openModal(addNewCardModal));
-//addCardModalCloseButton.addEventListener("click", () =>
-//closeModal(addNewCardModal)
-//);
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
