@@ -95,9 +95,9 @@ function getCardElement(cardData) {
 
   return cardElement;
 }
-previewImageModalCloseButton.addEventListener("click", () =>
-  closeModal(previewImageModal)
-);
+//previewImageModalCloseButton.addEventListener("click", () =>
+//closeModal(previewImageModal)
+//);
 
 function renderCard(cardData) {
   const cardElement = getCardElement(cardData);
@@ -156,18 +156,18 @@ function handleAddCardFormSubmit(e) {
 /*                     Event Listeners                          */
 
 profileEditBtn.addEventListener("click", () => {
-  profileTitle.value = profileTitle.textContent.trim();
-  profileDescriptionInput.value = profileDescriptionInput.textContent.trim();
+  profileTitleInput.value = profileTitle.textContent.trim();
+  profileDescriptionInput.value = profileDescription.textContent.trim();
   openModal(profileEditModal);
 });
 
-profileEditClosebtn.addEventListener("click", () =>
-  closeModal(profileEditModal)
-);
+//profileEditClosebtn.addEventListener("click", () =>
+//closeModal(profileEditModal)
+//);
 addNewCardButton.addEventListener("click", () => openModal(addNewCardModal));
-addCardModalCloseButton.addEventListener("click", () =>
-  closeModal(addNewCardModal)
-);
+//addCardModalCloseButton.addEventListener("click", () =>
+//closeModal(addNewCardModal)
+//);
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
