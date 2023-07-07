@@ -60,17 +60,19 @@
         ></button>
         <h2 class="modal__heading">Edit Profile</h2>
         <form class="modal__form" id="profile-edit-form" novalidate>
-          <input
-            type="text"
-            name="title"
-            class="modal__input"
-            placeholder="Name"
-            id="title-input"
-            minlength="2"
-            maxlength="40"
-            required
-          />
-          <span class="modal__error" id="title-input-error"></span>
+          <label class="modal__label">
+            <input
+              type="text"
+              name="title"
+              class="modal__input"
+              placeholder="Name"
+              id="title-input"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span class="modal__error" id="title-input-error"></span>
+          </label>
           <label class="modal__label">
             <input
               type="text"
@@ -99,25 +101,29 @@
         ></button>
         <h2 class="modal__heading">New Place</h2>
         <form class="modal__form" id="add-card-form" novalidate>
-          <input
-            type="text"
-            class="modal__input"
-            placeholder="Title"
-            id="modal-add"
-            minlength="1"
-            maxlength="30"
-            required
-          />
-          <span class="modal__error" id="modal-add-error"></span>
-          <input
-            type="url"
-            name="url"
-            class="modal__input"
-            placeholder="Image URL"
-            id="url-input"
-            required
-          />
-          <span class="modal__error" id="url-input-error"></span>
+          <label class="modal__label">
+            <input
+              type="text"
+              class="modal__input"
+              placeholder="Title"
+              id="modal-add"
+              minlength="1"
+              maxlength="30"
+              required
+            />
+            <span class="modal__error" id="modal-add-error"></span>
+          </label>
+          <label class="modal__label">
+            <input
+              type="url"
+              name="url"
+              class="modal__input"
+              placeholder="Image URL"
+              id="url-input"
+              required
+            />
+            <span class="modal__error" id="url-input-error"></span>
+          </label>
           <button class="modal__button" type="submit">Save</button>
         </form>
       </div>

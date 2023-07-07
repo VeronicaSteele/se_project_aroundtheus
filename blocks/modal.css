@@ -152,6 +152,7 @@
   top: 40px;
   left: 0;
   width: 358px;
+  position: absolute;
 }
 
 .modal__error_visible {
