@@ -1,8 +1,8 @@
 @import url(../vendor/normalize.css);
-@import url("../vendor/fonts.css");
-@import url("../blocks/card.css");
-@import url("../blocks/footer.css");
-@import url("../blocks/header.css");
-@import url("../blocks/page.css");
-@import url("../blocks/profile.css");
-@import url("../blocks/modal.css");
+@import url("../utils/fonts");
+@import url("../utils/blocks/card.css");
+@import url("../utils/blocks/footer.css");
+@import url("../utils/blocks/header.css");
+@import url("../utils/blocks/page.css");
+@import url("../utils/blocks/profile.css");
+@import url("../utils/blocks/modal.css");
