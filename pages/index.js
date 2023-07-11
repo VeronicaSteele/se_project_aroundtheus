@@ -1,3 +1,5 @@
+import Card from "../components/Card";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -24,6 +26,12 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+
+const cardData = {
+  name: "Yosemite Valley",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+}
+const card = new Card {cardData, "#card-template"};
 //                    Constants                                     //
 const cardsWrap = document.querySelector(".card__list");
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -68,35 +76,35 @@ function closeModal(modal) {
   document.removeEventListener("keyup", handleEscKey);
 }
 
-function getCardElement(cardData) {
+function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
   const deleteButton = cardElement.querySelector(".card__delete-button");
-  deleteButton.addEventListener("click", () => {
-    console.log(cardElement);
-    cardElement.remove();
-  });
+//  deleteButton.addEventListener("click", () => {
+   // console.log(cardElement);
+ //   cardElement.remove();
+//  });
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
   });
   cardImageEl.addEventListener("click", () => {
     openModal(previewImageModal);
-    imagePreview.src = cardData.link;
-    imagePreview.alt = cardData.name;
-    imageCaption.textContent = cardData.name;
+    imagePreview.src = data.link;
+    imagePreview.alt = data.name;
+    imageCaption.textContent = data.name;
   });
 
-  cardTitleEl.textContent = cardData.name;
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
+  cardTitleEl.textContent = data.name;
+  cardImageEl.src = data.link;
+  cardImageEl.alt = data.name;
 
   return cardElement;
 }
-function renderCard(cardData) {
-  const cardElement = getCardElement(cardData);
+function renderCard(data) {
+  const cardElement = getCardElement(data);
   cardListEl.prepend(cardElement);
 }
 
@@ -159,7 +167,7 @@ profileEditBtn.addEventListener("click", () => {
 
 addNewCardButton.addEventListener("click", () => openModal(addNewCardModal));
 
-initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
+initialCards.forEach((data) => {
+  const cardElement = getCardElement(data);
   cardListEl.prepend(cardElement);
 });
