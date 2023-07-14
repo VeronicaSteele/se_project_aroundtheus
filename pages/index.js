@@ -31,6 +31,7 @@ const cardData = {
   name: "Yosemite Valley",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 }
+//NOTE CARDATA ERROR****//
 const card = new Card {cardData, "#card-template"};
 //                    Constants                                     //
 const cardsWrap = document.querySelector(".card__list");
