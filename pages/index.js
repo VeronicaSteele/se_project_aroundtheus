@@ -32,7 +32,6 @@ const cardData = {
   name: "Yosemite Valley",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
-//NOTE CARDATA ERROR****//
 
 //                    Constants                                     //S
 const cardsWrap = document.querySelector(".card__list");
@@ -80,7 +79,7 @@ function closeModal(modal) {
 
 //                Validation
 
-const vlidationSettings = {
+const validationSettings = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",

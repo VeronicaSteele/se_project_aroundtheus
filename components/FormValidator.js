@@ -32,7 +32,7 @@ class FormValidator {
   //} else {
   //	buttonElement.classList.remove(config.inactiveButtonClass);
   //	buttonElement.disabled = false;
-  //}
+  //}fi
 
   _setEventListeners() {
     this._inputList = [...this._form.querySelectorAll(this._inputSelector)]; //Do we need config here?
