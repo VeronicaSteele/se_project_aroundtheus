@@ -36,6 +36,7 @@ const cardData = {
 //                    Constants                                     //S
 const cardsWrap = document.querySelector(".card__list");
 const profileEditModal = document.querySelector("#profile-edit-modal");
+0;
 const profileTitle = document.querySelector("#profile__title");
 const profileDescription = document.querySelector("#profile__description");
 const profileTitleInput = document.querySelector("#title-input");
@@ -167,8 +168,10 @@ function handleAddCardFormSubmit(e) {
 	closeModal(addNewCardModal);
 	addCardFormElement.reset();
 	const createButton = addCardFormElement.querySelector(".modal__button");
-	createButton.classList.add("modal__button_disabled");
 	createButton.disabled = true;
+	e.target.reset();
+	//createButton.classList.add("modal__button_disabled");
+	//createButton.disabled = true;
 }
 /*                     Event Listeners                          */
 
