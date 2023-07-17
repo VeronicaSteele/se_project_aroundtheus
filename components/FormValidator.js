@@ -66,11 +66,12 @@ class FormValidator {
 	}
 
 	enableValidation() {
+		this._setEventListeners();
 		this._form.addEventListener("submit", function (evt) {
 			evt.preventDefault();
 		});
-
-		setEventListeners(formElement, config);
+		this._toggleButtonState();
+		//setEventListeners(formElement, config);
 	}
 }
 
