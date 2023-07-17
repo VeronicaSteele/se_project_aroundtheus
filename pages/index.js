@@ -1,4 +1,4 @@
-import Card from "../components/Card";
+import Card from "../components/Card.js";
 
 const initialCards = [
   {
@@ -30,10 +30,10 @@ const initialCards = [
 const cardData = {
   name: "Yosemite Valley",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-}
+};
 //NOTE CARDATA ERROR****//
-const card = new Card {cardData, "#card-template"};
-//                    Constants                                     //
+
+//                    Constants                                     //S
 const cardsWrap = document.querySelector(".card__list");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileTitle = document.querySelector("#profile__title");
@@ -83,10 +83,10 @@ function getCardElement(data) {
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
   const deleteButton = cardElement.querySelector(".card__delete-button");
-//  deleteButton.addEventListener("click", () => {
-   // console.log(cardElement);
- //   cardElement.remove();
-//  });
+  //  deleteButton.addEventListener("click", () => {
+  // console.log(cardElement);
+  //   cardElement.remove();
+  //  });
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
@@ -169,6 +169,7 @@ profileEditBtn.addEventListener("click", () => {
 addNewCardButton.addEventListener("click", () => openModal(addNewCardModal));
 
 initialCards.forEach((data) => {
-  const cardElement = getCardElement(data);
-  cardListEl.prepend(cardElement);
+  const card = new Card(data, "#card-template");
+  // const cardElement = getCardElement(data);
+  // cardListEl.prepend(cardElement);
 });
