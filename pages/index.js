@@ -117,7 +117,7 @@ function getCardElement(data) {
 
 function renderCard(data) {
 	const card = new Card(data, "#card-template");
-	const cardElement = card.getView();
+	const cardElement = card.getView(data);
 	cardListEl.prepend(cardElement);
 }
 
