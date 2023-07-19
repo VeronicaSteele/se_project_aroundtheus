@@ -57,11 +57,6 @@ class FormValidator {
   }
 
   _setEventListeners() {
-    //this._inputList = [...this._formElement.querySelectorAll(this._inputSelector)]; //Do we need config here?
-    //this._buttonElement = this._formElement.querySelector(
-    //this._submitButtonSelector,
-    //);
-    //toggleButtonState(inputList, submitButton, config);
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         //checkInputValidity(this._formElement, inputElement, config);
@@ -73,12 +68,19 @@ class FormValidator {
   }
 
   enableValidation() {
+    //should this be private?
     this._setEventListeners();
     this._formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
     });
     this._toggleButtonState();
     //setEventListeners(formElement, config);
+  }
+  resetValidation() {
+    if (this._hasInvalidInput) {
+      this._toggleButtonState();
+    } else {
+    }
   }
 }
 
