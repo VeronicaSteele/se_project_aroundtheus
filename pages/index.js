@@ -87,6 +87,13 @@ const validationSettings = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
+const editProfileForm = document.querySelector("#profile-edit-form");
+const editProfileFormValidator = new FormValidator(
+  validationSettings,
+  editProfileForm
+);
+editProfileFormValidator.enableValidation();
+
 const addCardFormValidator = new FormValidator(
   validationSettings,
   addCardFormElement

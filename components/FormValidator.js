@@ -46,7 +46,6 @@ class FormValidator {
     });
   }
 
-  //What to do w/this function???
   _toggleButtonState() {
     if (this._hasInvalidInput(this._inputList)) {
       this._submitButton.classList.add(this._inactiveButtonClass);

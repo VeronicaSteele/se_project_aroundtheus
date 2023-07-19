@@ -40,7 +40,7 @@ export default class Card {
       .cloneNode(true);
 
     this._cardElement.querySelector(".card__title").textContent = this._name;
-    this._cardElement.querySelector(".card__image").image = this._link; //   ???????
+    this._cardElement.querySelector(".card__image").src = this._link;
     // get the card view
     //set event listeners
     this._setEventListeners();
