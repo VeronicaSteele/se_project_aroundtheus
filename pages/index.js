@@ -1,5 +1,11 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import {
+  handleEscKey,
+  openModal,
+  closeModal,
+  handlePopupClose,
+} from "../utils/utils.js";
 
 const initialCards = [
   {
@@ -73,11 +79,6 @@ const previewImageModalCloseButton = document.querySelector(
 );
 /*                    Functions                                  */
 
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keyup", handleEscKey);
-}
-
 //                Validation
 
 const validationSettings = {
@@ -127,27 +128,6 @@ function renderCard(data) {
   const card = new Card(data, "#card-template");
   const cardElement = card.getView();
   cardListEl.prepend(cardElement);
-}
-
-function handleEscKey(evt) {
-  if (evt.key === "Escape") {
-    const activeModal = document.querySelector(".modal_opened");
-    closeModal(activeModal);
-  }
-}
-
-function handlePopupClose(evt) {
-  if (
-    evt.target.classList.contains("modal__overlay") ||
-    evt.target.classList.contains("modal__close")
-  ) {
-    closeModal(evt.currentTarget);
-  }
-}
-
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keyup", handleEscKey);
 }
 
 // Form Listeners

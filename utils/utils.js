@@ -17,10 +17,13 @@ export function closeModal(modal){
     overlay.removeEventListener(type: "mousedown", handlePopupClose);
 }
 
-export function handlePopupClose(evt){
+
+function handlePopupClose(evt) {
     if (
-        evt.target.classList.contains("modal")|| evt.target.classList.contains("modal__close")
-    ){
-        closeModal(evt.currentTarget)
+      evt.target.classList.contains("modal__overlay") ||
+      evt.target.classList.contains("modal__close")
+    ) {
+      closeModal(evt.currentTarget);
     }
-}
+  }
+
