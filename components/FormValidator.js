@@ -76,12 +76,11 @@ class FormValidator {
     this._toggleButtonState();
     //setEventListeners(formElement, config);
   }
-  resetValidation() {
-    if (this._hasInvalidInput) {
-      this._toggleButtonState();
-    } else {
-    }
-  }
+  //resetValidation(this._inputList) {
+  //  this._toggleButtonState()
+  //  this._hideInputError()
+  //  }
+  // }
 }
 
 //const editFormValidator = new FormValidator();
