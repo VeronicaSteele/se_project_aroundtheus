@@ -124,7 +124,7 @@ function handleAddCardFormSubmit(e) {
 
 function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
-  export const cardImageEl = cardElement.querySelector(".card__image");
+  const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
   const deleteButton = cardElement.querySelector(".card__delete-button");

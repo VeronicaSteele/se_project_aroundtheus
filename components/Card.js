@@ -1,5 +1,6 @@
 import { openModal } from "../utils/utils.js";
-import{cardImageEl, previewImageModal} from "../pages/index.js"
+import { previewImageModal } from "../pages/index.js";
+
 export default class Card {
   constructor(data, cardSelector) {
     this._name = data.name;
@@ -25,13 +26,7 @@ export default class Card {
         this._handleLikeIcon();
       });
   }
-  cardImageEl.addEventListener("click", () => {
-		openModal(previewImageModal);
-		imagePreview.src = cardData.link;
-		imagePreview.alt = cardData.name;
-		imageCaption.textContent = cardData.name;
-	});
- /* _imageViewModal() {
+  /* _imageViewModal() {
     document.querySelector(".card__image").addEventListener("click", () => {
       openModal();
     });
@@ -56,6 +51,24 @@ export default class Card {
 
     this._cardElement.querySelector(".card__title").textContent = this._name;
     this._cardElement.querySelector(".card__image").src = this._link;
+
+    this._cardElement
+      .querySelector(".card__image")
+      .addEventListener("click", () => {
+        const imagePopup = document.querySelector(
+          "#view-card-modal .modal__image-container_popup"
+        );
+        const imageHeading = document.querySelector(
+          "#view-card-modal .modal__image-container_heading"
+        );
+
+        imagePopup.src = this._link;
+        imagePopup.alt = this._name;
+        imageHeading.textContent = this._name;
+
+        openModal(previewImageModal);
+      });
+
     // get the card view
     //set event listeners
     this._setEventListeners();
