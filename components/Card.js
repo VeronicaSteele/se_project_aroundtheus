@@ -1,3 +1,5 @@
+import { openModal } from "../utils/utils.js";
+
 export default class Card {
   constructor(data, cardSelector) {
     this._name = data.name;
@@ -23,6 +25,13 @@ export default class Card {
         this._handleLikeIcon();
       });
   }
+  _imageViewModal() {
+    document.querySelector(".card__image").addEventListener("click", () => {
+      openModal();
+    });
+  }
+  //add an event listener for the card image click
+  //when that happens, call openModal from utils.js (import to card
   _handleDeleteCard() {
     this._cardElement.remove();
     this._cardElement = null;
