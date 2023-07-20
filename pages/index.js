@@ -42,7 +42,6 @@ const cardData = {
 //                    Constants                                     //
 //const cardsWrap = document.querySelector(".card__list");
 const profileEditModal = document.querySelector("#profile-edit-modal");
-0;
 const profileTitle = document.querySelector("#profile__title");
 const profileDescription = document.querySelector("#profile__description");
 const profileTitleInput = document.querySelector("#title-input");
@@ -68,15 +67,16 @@ const imageCaption = previewImageModal.querySelector(
 // Buttons//
 
 const addNewCardButton = document.querySelector(".profile__add-button");
-const profileModalCloseButton = profileEditModal.querySelector(".modal__close");
-const addCardModalCloseButton = addNewCardModal.querySelector(".modal__close");
-const profileEditClosebtn = profileEditModal.querySelector(
+//const profileModalCloseButton = profileEditModal.querySelector(".modal__close");
+//const addCardModalCloseButton = addNewCardModal.querySelector(".modal__close");
+/*const profileEditClosebtn = profileEditModal.querySelector(
 	"#modal-close-button",
-);
+);*/
+
 const profileEditBtn = document.querySelector("#profile-edit-button");
-const previewImageModalCloseButton = document.querySelector(
+/*const previewImageModalCloseButton = document.querySelector(
 	"#preview-image-modal-close-button",
-);
+);*/
 /*                    Functions                                  */
 
 //                Validation
@@ -152,11 +152,6 @@ function renderCard(data) {
 	cardListEl.prepend(cardElement);
 }
 
-// Form Listeners
-profileEditModal.addEventListener("mousedown", handlePopupClose);
-addNewCardModal.addEventListener("mousedown", handlePopupClose);
-previewImageModal.addEventListener("mousedown", handlePopupClose);
-
 /*                     Event Listeners                          */
 
 profileEditBtn.addEventListener("click", () => {
@@ -170,3 +165,8 @@ addNewCardButton.addEventListener("click", () => openModal(addNewCardModal));
 initialCards.forEach((data) => {
 	renderCard(data);
 });
+
+// Form Listeners
+profileEditModal.addEventListener("mousedown", handlePopupClose);
+addNewCardModal.addEventListener("mousedown", handlePopupClose);
+previewImageModal.addEventListener("mousedown", handlePopupClose);
