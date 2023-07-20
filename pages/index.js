@@ -39,8 +39,8 @@ const cardData = {
 	link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
 
-//                    Constants                                     //S
-const cardsWrap = document.querySelector(".card__list");
+//                    Constants                                     //
+//const cardsWrap = document.querySelector(".card__list");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 0;
 const profileTitle = document.querySelector("#profile__title");
@@ -68,15 +68,15 @@ const imageCaption = previewImageModal.querySelector(
 // Buttons//
 
 const addNewCardButton = document.querySelector(".profile__add-button");
-const profileModalCloseButton = profileEditModal.querySelector(".modal__close");
-const addCardModalCloseButton = addNewCardModal.querySelector(".modal__close");
-const profileEditClosebtn = profileEditModal.querySelector(
+//const profileModalCloseButton = profileEditModal.querySelector(".modal__close");
+//const addCardModalCloseButton = addNewCardModal.querySelector(".modal__close");
+/*const profileEditClosebtn = profileEditModal.querySelector(
 	"#modal-close-button",
-);
+);*/
 const profileEditBtn = document.querySelector("#profile-edit-button");
-const previewImageModalCloseButton = document.querySelector(
+/*const previewImageModalCloseButton = document.querySelector(
 	"#preview-image-modal-close-button",
-);
+);*/
 /*                    Functions                                  */
 
 //                Validation
@@ -165,8 +165,8 @@ addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 /*                     Event Listeners                          */
 
 profileEditBtn.addEventListener("click", () => {
-	profileTitleInput.value = profileTitle.textContent.trim();
-	profileDescriptionInput.value = profileDescription.textContent.trim();
+	profileTitleInput.value = profileTitle.textContent;
+	profileDescriptionInput.value = profileDescription.textContent;
 	openModal(profileEditModal);
 });
 
@@ -175,6 +175,7 @@ addNewCardButton.addEventListener("click", () => openModal(addNewCardModal));
 initialCards.forEach((data) => {
 	renderCard(data);
 });
+
 //initialCards.forEach((data) => {
 //const card = new Card(data, "#card-template");
 // const cardElement = getCardElement(data);
