@@ -108,11 +108,7 @@ function handleAddCardFormSubmit(e) {
   renderCard({ name, link });
   closeModal(addNewCardModal);
   addCardFormElement.reset();
-  const createButton = addCardFormElement.querySelector(".modal__button");
-  createButton.disabled = true;
-  e.target.reset();
-  //createButton.classList.add("modal__button_disabled");
-  //createButton.disabled = true;
+  addCardFormValidator.resetValidation();
 }
 
 function getCardElement(data) {
@@ -159,10 +155,6 @@ initialCards.forEach((data) => {
   renderCard(data);
 });
 
-// Form Listeners
-profileEditModal.addEventListener("mousedown", handlePopupClose);
-addNewCardModal.addEventListener("mousedown", handlePopupClose);
-previewImageModal.addEventListener("mousedown", handlePopupClose);
 // Form Listeners
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);

@@ -7,10 +7,6 @@ export default class Card {
     this._link = data.link;
     this._cardSelector = cardSelector;
   }
-  _getTemplate() {
-    const cardTemplate = document.querySelector(this._templateSelector);
-    return cardTemplate.content.cloneNode(true);
-  }
 
   _setEventListeners() {
     //delete button
@@ -26,13 +22,7 @@ export default class Card {
         this._handleLikeIcon();
       });
   }
-  /* _imageViewModal() {
-    document.querySelector(".card__image").addEventListener("click", () => {
-      openModal();
-    });
-  }*/
-  //add an event listener for the card image click
-  //when that happens, call openModal from utils.js (import to card
+
   _handleDeleteCard() {
     this._cardElement.remove();
     this._cardElement = null;
@@ -50,7 +40,7 @@ export default class Card {
       .cloneNode(true);
 
     this._cardElement.querySelector(".card__title").textContent = this._name;
-    this._cardElement.querySelector(".card__image").src = this._link;
+    this._cardElement.querySelector(".card__image").src = this._link alt = "image";
 
     this._cardElement
       .querySelector(".card__image")

@@ -9,13 +9,13 @@ export function handleEscKey(evt) {
 export function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keyup", handleEscKey);
-  overlay.addEventListener("mousedown", handlePopupClose);
+  modal.addEventListener("mousedown", handlePopupClose);
 }
 
 export function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keyup", handleEscKey);
-  overlay.removeEventListener("mousedown", handlePopupClose);
+  modal.removeEventListener("mousedown", handlePopupClose);
 }
 
 export function handlePopupClose(evt) {
