@@ -2,8 +2,7 @@ const overlay = document.querySelector(".page");
 
 export function handleEscKey(evt) {
   if (evt.key === "Escape") {
-    const activeModal = document.querySelector(".modal_opened");
-    overlay.addEventListener("mousedown", handlePopupClose);
+    closeModal(document.querySelector(".modal_opened"));
   }
 }
 
