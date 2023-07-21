@@ -67,16 +67,9 @@ const imageCaption = previewImageModal.querySelector(
 // Buttons//
 
 const addNewCardButton = document.querySelector(".profile__add-button");
-//const profileModalCloseButton = profileEditModal.querySelector(".modal__close");
-//const addCardModalCloseButton = addNewCardModal.querySelector(".modal__close");
-/*const profileEditClosebtn = profileEditModal.querySelector(
-	"#modal-close-button",
-);*/
 
 const profileEditBtn = document.querySelector("#profile-edit-button");
-/*const previewImageModalCloseButton = document.querySelector(
-	"#preview-image-modal-close-button",
-);*/
+
 /*                    Functions                                  */
 
 //                Validation
@@ -170,3 +163,6 @@ initialCards.forEach((data) => {
 profileEditModal.addEventListener("mousedown", handlePopupClose);
 addNewCardModal.addEventListener("mousedown", handlePopupClose);
 previewImageModal.addEventListener("mousedown", handlePopupClose);
+// Form Listeners
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
