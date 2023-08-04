@@ -1,0 +1,13 @@
+@import url("../vendor/normalize.css");
+@import url("../fonts/Inter-Black.woff");
+@import url("../fonts/Inter-Black.woff2");
+@import url("../fonts/Inter-Medium.woff");
+@import url("../fonts/Inter-Medium.woff2");
+@import url("../fonts/Inter-Regular.woff");
+@import url("../fonts/Inter-Regular.woff2");
+@import url("../blocks/card.css");
+@import url("../blocks/footer.css");
+@import url("../blocks/header.css");
+@import url("../blocks/page.css");
+@import url("../blocks/profile.css");
+@import url("../blocks/modal.css");
