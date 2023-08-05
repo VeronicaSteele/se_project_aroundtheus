@@ -1,22 +1,22 @@
 import PopupWithForm from "./PopupWithForm";
 
 export default class Popup {
-  constructor({ popupSelector }) {
+  constructor(popupSelector) {
     this._popupElement = document.querySelector(popupSelector);
   }
   // this._overlay = document.querySelector(".page");
   // openpopup
-  openModal(modal) {
-    modal.classList.add("modal_opened");
-    document.addEventListener("keyup", handleEscKey);
-    modal.addEventListener("mousedown", handlePopupClose);
+  openModal() {
+    this._popupElement.classList.add("modal_opened");
+    document.addEventListener("keyup", this._handleEscKey);
+    this._popupElement.addEventListener("mousedown", this._handlePopupClose);
   }
 
   //close popup
   closeModal(modal) {
-    modal.classList.remove("modal_opened");
-    document.removeEventListener("keyup", handleEscKey);
-    modal.removeEventListener("mousedown", handlePopupClose);
+    this._popupElement.classList.remove("modal_opened");
+    document.removeEventListener("keyup", this._handleEscKey);
+    this._popupElement.removeEventListener("mousedown", this._handlePopupClose);
   }
   //handleEscClose
   _handleEscKey(evt) {
@@ -25,7 +25,7 @@ export default class Popup {
     }
   }
 
-  handlePopupClose(evt) {
+  _handlePopupClose(evt) {
     if (
       evt.target.classList.contains("modal__overlay") ||
       evt.target.classList.contains("modal__close")

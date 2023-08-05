@@ -1,12 +1,14 @@
+import "./index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import "../pages/index.css";
+import "../pages/index.js";
 import {
   handleEscKey,
   openModal,
   closeModal,
   handlePopupClose,
-} from "../../utils/utils.js";
+} from "../components/utils.js";
+import PopupWithForm from "../components/PopupWithForm";
 
 const initialCards = [
   {
@@ -142,6 +144,8 @@ function renderCard(data) {
   cardListEl.prepend(cardElement);
 }
 
+const newCardPopup = new PopupWithForm("#add-card-modal", () => {});
+
 /*                     Event Listeners                          */
 
 profileEditBtn.addEventListener("click", () => {
@@ -150,7 +154,7 @@ profileEditBtn.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
-addNewCardButton.addEventListener("click", () => openModal(addNewCardModal));
+addNewCardButton.addEventListener("click", () => newCardPopup.openModal());
 
 initialCards.forEach((data) => {
   renderCard(data);
@@ -158,4 +162,4 @@ initialCards.forEach((data) => {
 
 // Form Listeners
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
+//addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
