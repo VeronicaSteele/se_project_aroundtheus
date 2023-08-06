@@ -1,4 +1,4 @@
-import { openModal } from "./utils.js";
+import { openModal } from "./Popup.js";
 import { previewImageModal } from "../pages/index.js";
 
 export default class Card {

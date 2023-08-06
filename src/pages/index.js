@@ -7,8 +7,9 @@ import {
   openModal,
   closeModal,
   handlePopupClose,
-} from "../components/utils.js";
+} from "..components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm";
+import Section from "../components/Section";
 
 const initialCards = [
   {
@@ -66,6 +67,15 @@ const imagePreview = previewImageModal.querySelector(
 const imageCaption = previewImageModal.querySelector(
   ".modal__image-container_heading"
 );
+const section = new Section({
+  items: initialCards,
+  renderer: (cardData) => {
+    //creat card using normal method (rendercard, but return cardElement)
+    const cardEl = renderCard(cardData);
+    section.addCardItem(cardEl);
+  },
+});
+section.renderItems();
 
 // Buttons//
 
@@ -156,9 +166,9 @@ profileEditBtn.addEventListener("click", () => {
 
 addNewCardButton.addEventListener("click", () => newCardPopup.openModal());
 
-initialCards.forEach((data) => {
-  renderCard(data);
-});
+//initialCards.forEach((data) => {
+// renderCard(data);
+//});
 
 // Form Listeners
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
