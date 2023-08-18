@@ -72,8 +72,9 @@ const section = new Section({
   renderer: (cardData) => {
     //creat card using normal method (rendercard, but return cardElement)
     const cardEl = renderCard(cardData);
-    section.addCardItem(cardEl);
+    section.addItem(cardEl);
   },
+  cardListEl,
 });
 section.renderItems();
 
@@ -151,7 +152,7 @@ function getCardElement(data) {
 function renderCard(data) {
   const card = new Card(data, "#card-template");
   const cardElement = card.getView();
-  cardListEl.prepend(cardElement);
+  return cardElement;
 }
 
 const newCardPopup = new PopupWithForm("#add-card-modal", () => {});
