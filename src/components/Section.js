@@ -6,11 +6,15 @@ export default class Section {
   }
   renderItems() {
     // loop through list of this._items
+    this._items.forEach(() => {
+      this._name;
+      this.link;
+      this._renderer(items);
+    });
     //{name:'', link:''}
-    // invoke the callback functiona and pass the card data to it
-    this._renderer();
+    // invoke the callback functiona and pass the card data to it ??
   }
   addItem(cardEl) {
-    // prepend the cardEl to this._cardListEl
+    // prepend the cardEl to this._cardListEl-how??
   }
 }

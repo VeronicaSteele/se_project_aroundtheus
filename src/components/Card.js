@@ -1,4 +1,4 @@
-import { openModal } from "./Popup.js";
+//import { openModal } from "./Popup.js";//this is bad juju
 import { previewImageModal } from "../pages/index.js";
 
 export default class Card {
@@ -36,7 +36,7 @@ export default class Card {
         imagePopup.alt = this._name;
         imageHeading.textContent = this._name;
 
-        openModal(previewImageModal);
+        // openModal(previewImageModal);
       });
   }
 
