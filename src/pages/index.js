@@ -67,15 +67,16 @@ const imagePreview = previewImageModal.querySelector(
 const imageCaption = previewImageModal.querySelector(
   ".modal__image-container_heading"
 );
-const section = new Section({
-  items: initialCards,
-  renderer: (cardData) => {
-    //creat card using normal method (rendercard, but return cardElement)
-    const cardEl = renderCard(cardData);
-    section.addItem(cardEl);
+const section = new Section(
+  {
+    items: initialCards,
+    renderer: (cardData) => {
+      const cardEl = renderCard(cardData);
+      section.addItem(cardEl);
+    },
   },
-  cardListEl,
-});
+  ".card__item"
+);
 section.renderItems();
 
 // Buttons//
@@ -150,11 +151,14 @@ function getCardElement(data) {
 }
 
 function renderCard(data) {
-  const card = new Card(data, "#card-template");
-  const cardElement = card.getView();
-  return cardElement;
+  const card = new Card(data, "#card-template", handleCardClick);
+  return card.getView();
 }
 
+function handleCardClick(name, link) {
+  // popupWithImage
+  //open popup here
+}
 const newCardPopup = new PopupWithForm("#add-card-modal", () => {});
 
 /*                     Event Listeners                          */

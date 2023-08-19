@@ -5,15 +5,12 @@ export default class Section {
     this._cardListEl = document.querySelector(selector);
   }
   renderItems() {
-    // loop through list of this._items
     this._items.forEach((item) => {
       this._renderer(item);
     });
-    //{name:'', link:''}
-    // invoke the callback functiona and pass the card data to it ??
   }
+  //per brief, put renderer here??
   addItem(cardEl) {
-    // prepend the cardEl to this._cardListEl-how??
     this._cardListEl.prepend(cardEl);
   }
 }

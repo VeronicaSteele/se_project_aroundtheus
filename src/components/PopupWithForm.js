@@ -17,4 +17,8 @@ export default class PopupWithForm extends Popup {
       this._handleFormSubmit();
     });
   }
+  _getInputValues() {
+    //collects data how?
+    return; //obj
+  }
 }
