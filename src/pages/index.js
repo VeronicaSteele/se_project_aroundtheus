@@ -2,14 +2,9 @@ import "./index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import "../pages/index.js";
-//mport {
-//handleEscKey,
-//openModal,
-//closeModal,
-//handlePopupClose,
-//} from "..components/Popup.js"; //don't import individual methods
 import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section";
+import PopupWithImage from "../components/PopupWithImage";
 
 const initialCards = [
   {
@@ -157,9 +152,10 @@ function renderCard(data) {
 
 function handleCardClick(name, link) {
   // popupWithImage
-  //open popup here
+  PopupWithImage.openModal();
 }
 const newCardPopup = new PopupWithForm("#add-card-modal", () => {});
+newCardPopup.setEventListeners();
 
 /*                     Event Listeners                          */
 

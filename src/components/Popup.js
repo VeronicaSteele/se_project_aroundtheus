@@ -6,28 +6,31 @@ export default class Popup {
   }
   _handleEscClose(evt) {
     if (evt.key === "Escape") {
-      closeModal(document.querySelector(".modal_opened"));
+      this.closeModal(document.querySelector(".modal_opened"));
     }
   }
 
   openModal() {
     this._popupElement.classList.add("modal_opened");
-    document.addEventListener("keyup", _handleEscClose);
-    this._popupElement.addEventListener("mousedown", _handlePopupClose);
+    document.addEventListener("keyup", this._handleEscClose);
+    // this._popupElement.addEventListener("mousedown", this._handlePopupClose);
   }
 
   closeModal() {
     this._popupElement.classList.remove("modal_opened");
-    document.removeEventListener("keyup", _handleEscClose);
-    this._popupElement.removeEventListener("mousedown", _handlePopupClose);
+    document.removeEventListener("keyup", this._handleEscClose);
+    // this._popupElement.removeEventListener("mousedown", this._handlePopupClose);
   }
 
-  _handlePopupClose(evt) {
-    if (
-      evt.target.classList.contains("modal__overlay") ||
-      evt.target.classList.contains("modal__close")
-    ) {
-      closeModal(evt.currentTarget);
-    }
+  setEventListeners() {
+    console.trace();
+    this._popupElement.addEventListener("click", (evt) => {
+      if (
+        evt.target.classList.contains("modal__overlay") ||
+        evt.target.classList.contains("modal__close")
+      ) {
+        this.closeModal();
+      }
+    });
   }
 }

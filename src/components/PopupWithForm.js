@@ -9,15 +9,20 @@ export default class PopupWithForm extends Popup {
   }
   close() {
     this._popupForm.reset();
-    super.close();
+    super.closeModal();
   }
   _setEventListeners() {
     this._popupForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      this._handleFormSubmit();
+      this._handleFormSubmit(this._getInputValues);
     });
   }
   _getInputValues() {
+    //create new variable that is an empty object
+    //loop through the form inputs .forEach
+    const values = {};
+    //create key-value pair
+    //after loop return the result
     //collects data how?
     return; //obj
   }

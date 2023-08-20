@@ -2,7 +2,7 @@
 import { previewImageModal } from "../pages/index.js";
 
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
@@ -26,7 +26,7 @@ export default class Card {
     this._cardElement
       .querySelector(".card__image")
       .addEventListener("click", () => {
-        this._handleCardClick(this, _name, this._link);
+        this._handleCardClick(this._name, this._link);
       });
   }
 
