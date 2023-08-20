@@ -3,8 +3,9 @@ import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import "../pages/index.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import Section from "../components/Section";
-import PopupWithImage from "../components/PopupWithImage";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
 
 const initialCards = [
   {
@@ -151,11 +152,13 @@ function renderCard(data) {
 }
 
 function handleCardClick(name, link) {
-  // popupWithImage
   PopupWithImage.openModal();
 }
 const newCardPopup = new PopupWithForm("#add-card-modal", () => {});
 newCardPopup.setEventListeners();
+const newImagePopup = new PopupWithImage("#view-card-modal", () => {});
+newImagePopup.setEventListeners();
+const userInfo = new UserInfo(profileTitle, profileDescription);
 
 /*                     Event Listeners                          */
 

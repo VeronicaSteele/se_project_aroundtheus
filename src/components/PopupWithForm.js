@@ -4,7 +4,7 @@ export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
     this._popupForm = this._popupElement.querySelector(".modal__form");
-    this._handleFormSubmit = handleFormSubmit;
+    this._handleFormSubmit = handleFormSubmit.bind(this);
     this._setEventListeners();
   }
   close() {
@@ -14,16 +14,17 @@ export default class PopupWithForm extends Popup {
   _setEventListeners() {
     this._popupForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      this._handleFormSubmit(this._getInputValues);
+      const formValues = this._getInputValues();
+      this._handleFormSubmit(formValues);
     });
   }
   _getInputValues() {
-    //create new variable that is an empty object
-    //loop through the form inputs .forEach
     const values = {};
-    //create key-value pair
-    //after loop return the result
-    //collects data how?
-    return; //obj
+    const inputElements = this._popupForm.querySelectorAll(".modal__input");
+    inputElements.forEach((input) => {
+      values[input.name] = input.value; // Create a key-value pair
+    });
+
+    return values;
   }
 }

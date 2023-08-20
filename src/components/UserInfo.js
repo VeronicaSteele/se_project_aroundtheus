@@ -1,11 +1,17 @@
 export default class UserInfo {
   constructor(profileTitle, profileDescription) {
-    //do I need to link index.js to access these arguments?
-    getUserInfo(){
-        //return object with user info
-    }
+    this._profileTitle = profileTitle;
+    this._profileDescription = profileDescription;
   }
-  setUserInfo({
-    //adds user info to page
-  })
+  getUserInfo() {
+    const userInfo = {
+      name: this._profileTitle.textContent,
+      description: this._profileDescription.textContent,
+    };
+    return userInfo;
+  }
+  setUserInfo({ name, description }) {
+    this._profileTitle.textContent = name;
+    this._profileDescription.textContent = description;
+  }
 }
