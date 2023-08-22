@@ -158,9 +158,17 @@ const newCardPopup = new PopupWithForm(
   handleAddCardFormSubmit
 );
 newCardPopup.setEventListeners();
+
 const newImagePopup = new PopupWithImage("#view-card-modal");
 newImagePopup.setEventListeners();
+
 const userInfo = new UserInfo(profileTitle, profileDescription);
+
+const newProfileEdit = new PopupWithForm(
+  "#add-card-modal",
+  handleProfileEditSubmit
+);
+newProfileEdit.setEventListeners();
 
 /*                     Event Listeners                          */
 
