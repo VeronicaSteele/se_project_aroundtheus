@@ -6,7 +6,7 @@ export default class Popup {
   }
   _handleEscClose(evt) {
     if (evt.key === "Escape") {
-      this.closeModal(document.querySelector(".modal_opened"));
+      this._popupElement.closeModal();
     }
   }
 
