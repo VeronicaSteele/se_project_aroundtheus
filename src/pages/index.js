@@ -1,11 +1,11 @@
 import "./index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import "../pages/index.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
+import Popup from "../components/Popup";
 
 const initialCards = [
   {
@@ -155,7 +155,7 @@ function handleCardClick(name, link) {
 }
 const newCardPopup = new PopupWithForm(
   "#add-card-modal",
-  handleAddCardFormSubmit()
+  handleAddCardFormSubmit
 );
 newCardPopup.setEventListeners();
 const newImagePopup = new PopupWithImage("#view-card-modal");
