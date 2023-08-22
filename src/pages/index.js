@@ -165,10 +165,11 @@ newImagePopup.setEventListeners();
 const userInfo = new UserInfo(profileTitle, profileDescription);
 
 const newProfileEdit = new PopupWithForm(
-  "#add-card-modal",
+  "profile-edit-modal",
   handleProfileEditSubmit
 );
 newProfileEdit.setEventListeners();
+//newProfileEdit.openModal();
 
 /*                     Event Listeners                          */
 
