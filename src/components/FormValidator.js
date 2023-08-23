@@ -59,30 +59,25 @@ class FormValidator {
   _setEventListeners() {
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
-        //checkInputValidity(this._formElement, inputElement, config);
         this._checkInputValidity(inputElement);
-        //toggleButtonState(inputList, submitButton, config);
         this._toggleButtonState();
       });
     });
   }
 
   enableValidation() {
-    //should this be private?
     this._setEventListeners();
     this._formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
     });
-    this._toggleButtonState();
-    //setEventListeners(formElement, config);
+    //this._toggleButtonState();
   }
 
   resetValidation() {
+    this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
-
-    this._toggleButtonState();
   }
 }
 

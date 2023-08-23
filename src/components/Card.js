@@ -1,6 +1,3 @@
-//import { openModal } from "./Popup.js";//this is bad juju
-import { previewImageModal } from "../pages/index.js";
-
 export default class Card {
   constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;

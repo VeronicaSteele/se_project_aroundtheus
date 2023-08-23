@@ -4,11 +4,11 @@ export default class Popup {
   constructor(popupSelector) {
     this._popupElement = document.querySelector(popupSelector);
   }
-  _handleEscClose(evt) {
+  _handleEscClose = (evt) => {
     if (evt.key === "Escape") {
-      this._popupElement.closeModal();
+      this.closeModal();
     }
-  }
+  };
 
   openModal() {
     this._popupElement.classList.add("modal_opened");
@@ -21,7 +21,7 @@ export default class Popup {
   }
 
   setEventListeners() {
-    this._popupElement.addEventListener("click", (evt) => {
+    this._popupElement.addEventListener("mousedown", (evt) => {
       if (
         evt.target.classList.contains("modal__overlay") ||
         evt.target.classList.contains("modal__close")

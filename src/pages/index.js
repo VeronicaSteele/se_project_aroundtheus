@@ -106,8 +106,20 @@ const addCardFormValidator = new FormValidator(
 addCardFormValidator.enableValidation();
 
 function handleProfileEditSubmit(e) {
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
+  e.preventDefault();
+
+  const profileTitleInput = document.getElementById("#title-input");
+  const profileDescriptionInput = document.getElementById(
+    "#profile-description"
+  );
+  const newTitle = profileTitleInput.value;
+  const newDescription = profileDescriptionInput.value;
+  userInfo.setUserInfo({
+    name: profileTitleInput.value,
+    description: profileDescriptionInput.value,
+  });
+  profileDescription.textContent = newDescription;
+
   newProfileEdit.closeModal();
 }
 
@@ -115,31 +127,6 @@ function handleAddCardFormSubmit(inputValues) {
   const cardEl = renderCard(inputValues);
   section.addItem(cardEl);
   newCardPopup.closeModal();
-  addCardFormValidator.resetValidation();
-}
-
-function getCardElement(data) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-  cardImageEl.addEventListener("click", () => {
-    openModal(previewImageModal);
-    imagePreview.src = data.link;
-    imagePreview.alt = data.name;
-    imageCaption.textContent = data.name;
-  });
-
-  cardTitleEl.textContent = data.name;
-  cardImageEl.src = data.link;
-  cardImageEl.alt = data.name;
-
-  return cardElement;
 }
 
 //New Image Popup
@@ -174,10 +161,11 @@ newProfileEdit.setEventListeners();
 /*                     Event Listeners                          */
 
 profileEditBtn.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent.trim();
-  profileDescriptionInput.value = profileDescription.textContent.trim();
+  const UserData = userInfo.getUserInfo({
+    name: profileTitleInput.value,
+    description: profileDescriptionInput.value,
+  });
+  // profileTitleInput.value = profileTitle.textContent.trim();
+  // profileDescriptionInput.value = profileDescription.textContent.trim();
   newProfileEdit.openModal();
 });
-
-// Form Listeners
-//profileEditForm.addEventListener("submit", handleProfileEditSubmit);
