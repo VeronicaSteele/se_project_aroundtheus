@@ -113,7 +113,7 @@ function handleProfileEditSubmit(e) {
 
 function handleAddCardFormSubmit(inputValues) {
   //debugger;
-  renderCard(inputValues);
+  const cardEl = renderCard(inputValues);
   section.addItem(cardEl);
   newCardPopup.closeModal();
   addCardFormValidator.resetValidation();
