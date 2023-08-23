@@ -8,8 +8,8 @@ export default class PopupWithForm extends Popup {
     this._setEventListeners();
   }
   closeModal() {
+    this._popupForm.reset();
     super.closeModal();
-    // this._popupForm.reset();
   }
   _setEventListeners() {
     this._popupForm.addEventListener("submit", (e) => {

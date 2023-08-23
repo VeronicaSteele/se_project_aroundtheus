@@ -9,7 +9,7 @@ export default class Section {
       this._renderer(item);
     });
   }
-  //per brief, put renderer here??
+
   addItem(cardEl) {
     this._cardListEl.prepend(cardEl);
   }

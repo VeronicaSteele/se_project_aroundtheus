@@ -112,11 +112,8 @@ function handleProfileEditSubmit(e) {
 }
 
 function handleAddCardFormSubmit(inputValues) {
-  //const name = cardTitleInput.value;
-  // const link = cardUrlInput.value;
   renderCard(inputValues);
   newCardPopup.closeModal();
-  addCardFormElement.reset();
   addCardFormValidator.resetValidation();
 }
 
@@ -144,13 +141,17 @@ function getCardElement(data) {
   return cardElement;
 }
 
+//New Image Popup
+const newImagePopup = new PopupWithImage("#view-card-modal");
+newImagePopup.setEventListeners();
+
 function renderCard(data) {
   const card = new Card(data, "#card-template", handleCardClick);
   return card.getView();
 }
 
 function handleCardClick(name, link) {
-  newImagePopup.openModal();
+  newImagePopup.openModal({ name, link });
 }
 //New Card Popup
 const newCardPopup = new PopupWithForm(
@@ -160,11 +161,7 @@ const newCardPopup = new PopupWithForm(
 newCardPopup.setEventListeners();
 addNewCardButton.addEventListener("click", () => newCardPopup.openModal());
 
-//New Image Popup
-const newImagePopup = new PopupWithImage("#view-card-modal");
-newImagePopup.setEventListeners();
-
-const userInfo = new UserInfo(profileTitle, profileDescription);
+const userInfo = new UserInfo({ profileTitle, profileDescription });
 
 //Profile Edit Popup
 const newProfileEdit = new PopupWithForm(
