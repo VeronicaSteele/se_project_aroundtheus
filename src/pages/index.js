@@ -105,21 +105,13 @@ const addCardFormValidator = new FormValidator(
 );
 addCardFormValidator.enableValidation();
 
-function handleProfileEditSubmit(e) {
-  e.preventDefault();
-
-  const profileTitleInput = document.getElementById("#title-input");
-  const profileDescriptionInput = document.getElementById(
-    "#profile-description"
-  );
-  const newTitle = profileTitleInput.value;
+function handleProfileEditSubmit(inputValues) {
   const newDescription = profileDescriptionInput.value;
   userInfo.setUserInfo({
     name: profileTitleInput.value,
     description: profileDescriptionInput.value,
   });
   profileDescription.textContent = newDescription;
-
   newProfileEdit.closeModal();
 }
 
@@ -161,11 +153,8 @@ newProfileEdit.setEventListeners();
 /*                     Event Listeners                          */
 
 profileEditBtn.addEventListener("click", () => {
-  const UserData = userInfo.getUserInfo({
-    name: profileTitleInput.value,
-    description: profileDescriptionInput.value,
-  });
-  // profileTitleInput.value = profileTitle.textContent.trim();
-  // profileDescriptionInput.value = profileDescription.textContent.trim();
+  const userData = userInfo.getUserInfo();
+  profileTitleInput.value = userData.name.trim();
+  profileDescriptionInput.value = userData.description.trim();
   newProfileEdit.openModal();
 });
