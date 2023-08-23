@@ -112,7 +112,6 @@ function handleProfileEditSubmit(e) {
 }
 
 function handleAddCardFormSubmit(inputValues) {
-  //debugger;
   const cardEl = renderCard(inputValues);
   section.addItem(cardEl);
   newCardPopup.closeModal();
