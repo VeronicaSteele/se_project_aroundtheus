@@ -106,13 +106,16 @@ const addCardFormValidator = new FormValidator(
 addCardFormValidator.enableValidation();
 
 function handleProfileEditSubmit(inputValues) {
-  const newDescription = inputValues.description;
-  const newName = inputValues.name;
+  //const newDescription = inputValues.description;
+  // const newName = inputValues.name;
+  console.log(inputValues);
   userInfo.setUserInfo({
-    name: inputValues.name,
+    name: inputValues.title,
     description: inputValues.description,
   });
+  console.log("test");
   newProfileEdit.closeModal();
+  console.log("test2");
 }
 
 function handleAddCardFormSubmit(inputValues) {
