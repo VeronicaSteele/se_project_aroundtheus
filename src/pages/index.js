@@ -106,12 +106,12 @@ const addCardFormValidator = new FormValidator(
 addCardFormValidator.enableValidation();
 
 function handleProfileEditSubmit(inputValues) {
-  const newDescription = profileDescriptionInput.value;
+  const newDescription = inputValues.description;
+  const newName = inputValues.name;
   userInfo.setUserInfo({
-    name: profileTitleInput.value,
-    description: profileDescriptionInput.value,
+    name: inputValues.name,
+    description: inputValues.description,
   });
-  profileDescription.textContent = newDescription;
   newProfileEdit.closeModal();
 }
 
@@ -139,7 +139,10 @@ const newCardPopup = new PopupWithForm(
   handleAddCardFormSubmit
 );
 newCardPopup.setEventListeners();
-addNewCardButton.addEventListener("click", () => newCardPopup.openModal());
+addNewCardButton.addEventListener("click", () => {
+  newCardPopup.resetValidation();
+  newCardPopup.openModal();
+});
 
 const userInfo = new UserInfo({ profileTitle, profileDescription });
 
