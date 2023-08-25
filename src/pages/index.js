@@ -143,7 +143,7 @@ const newCardPopup = new PopupWithForm(
 );
 newCardPopup.setEventListeners();
 addNewCardButton.addEventListener("click", () => {
-  addCardFormValidator.resetValidation;
+  addCardFormValidator.resetValidation();
   newCardPopup.openModal();
 });
 
