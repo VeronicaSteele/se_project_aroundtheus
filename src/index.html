@@ -6,13 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Around the US</title>
     <link rel="icon" href="./images/favicon.ico" />
-    <link href="./pages/index.css" rel="stylesheet" />
   </head>
   <body class="page" id="page">
     <div class="page__content">
       <header class="header page__section">
         <img
-          src="./images/Around.svg"
+          src="<%=require('./images/Around.svg')%>"
           alt="Around the US logo"
           class="header__logo"
         />
@@ -20,7 +19,7 @@
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/jacques-cousteau(1).jpg"
+            src="<%=require('./images/jacques-cousteau(1).jpg')%>"
             alt="profile-img"
             class="profile__img"
           />
@@ -104,6 +103,7 @@
           <label class="modal__label">
             <input
               type="text"
+              name="name"
               class="modal__input"
               placeholder="Title"
               id="modal-add"
@@ -116,7 +116,7 @@
           <label class="modal__label">
             <input
               type="url"
-              name="url"
+              name="link"
               class="modal__input"
               placeholder="Image URL"
               id="url-input"
@@ -138,11 +138,15 @@
           id="preview-image-modal-close-button"
         ></button>
         <img
+          type="link"
+          name="name"
           src="#"
           alt=""
-          class="modal__image-container modal__image-container_popup"
+          class="modal__image-container modal__image-container_popup modal__image"
         />
-        <p class="modal__image-container modal__image-container_heading"></p>
+        <p
+          class="modal__image-container modal__image-container_heading modal__caption"
+        ></p>
       </div>
       <div class="modal__overlay"></div>
     </div>
@@ -157,6 +161,5 @@
         </div>
       </li>
     </template>
-    <script src="./pages/index.js" type="module" defer></script>
   </body>
 </html>

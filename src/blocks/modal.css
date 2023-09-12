@@ -85,7 +85,6 @@
 }
 .modal__input:last-of-type {
   margin-bottom: 0;
-  border: 1px solid #000;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -145,7 +144,7 @@
   font-size: 12px;
   line-height: 0.9;
   color: #ff0000;
-  border-bottom: 1px solid #ff0000;
+
   opacity: 0;
   top: 40px;
   left: 0;
