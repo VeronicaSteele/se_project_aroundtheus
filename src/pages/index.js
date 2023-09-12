@@ -1,11 +1,11 @@
+import "./index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import {
-  handleEscKey,
-  openModal,
-  closeModal,
-  handlePopupClose,
-} from "../utils/utils.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
+import Popup from "../components/Popup";
 
 const initialCards = [
   {
@@ -63,6 +63,17 @@ const imagePreview = previewImageModal.querySelector(
 const imageCaption = previewImageModal.querySelector(
   ".modal__image-container_heading"
 );
+const section = new Section(
+  {
+    items: initialCards,
+    renderer: (cardData) => {
+      const cardEl = renderCard(cardData);
+      section.addItem(cardEl);
+    },
+  },
+  ".card__item"
+);
+section.renderItems();
 
 // Buttons//
 
@@ -94,67 +105,62 @@ const addCardFormValidator = new FormValidator(
 );
 addCardFormValidator.enableValidation();
 
-function handleProfileEditSubmit(e) {
-  e.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
-  closeModal(profileEditModal);
-}
-
-function handleAddCardFormSubmit(e) {
-  e.preventDefault();
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
-  renderCard({ name, link });
-  closeModal(addNewCardModal);
-  addCardFormElement.reset();
-  addCardFormValidator.resetValidation();
-}
-
-function getCardElement(data) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
+function handleProfileEditSubmit(inputValues) {
+  //const newDescription = inputValues.description;
+  // const newName = inputValues.name;
+  console.log(inputValues);
+  userInfo.setUserInfo({
+    name: inputValues.title,
+    description: inputValues.description,
   });
-  cardImageEl.addEventListener("click", () => {
-    openModal(previewImageModal);
-    imagePreview.src = data.link;
-    imagePreview.alt = data.name;
-    imageCaption.textContent = data.name;
-  });
-
-  cardTitleEl.textContent = data.name;
-  cardImageEl.src = data.link;
-  cardImageEl.alt = data.name;
-
-  return cardElement;
+  console.log("test");
+  newProfileEdit.closeModal();
+  console.log("test2");
 }
+
+function handleAddCardFormSubmit(inputValues) {
+  const cardEl = renderCard(inputValues);
+  section.addItem(cardEl);
+  newCardPopup.closeModal();
+}
+
+//New Image Popup
+const newImagePopup = new PopupWithImage("#view-card-modal");
+newImagePopup.setEventListeners();
 
 function renderCard(data) {
-  const card = new Card(data, "#card-template");
-  const cardElement = card.getView();
-  cardListEl.prepend(cardElement);
+  const card = new Card(data, "#card-template", handleCardClick);
+  return card.getView();
 }
+
+function handleCardClick(name, link) {
+  newImagePopup.openModal({ name, link });
+}
+//New Card Popup
+const newCardPopup = new PopupWithForm(
+  "#add-card-modal",
+  handleAddCardFormSubmit
+);
+newCardPopup.setEventListeners();
+addNewCardButton.addEventListener("click", () => {
+  addCardFormValidator.resetValidation();
+  newCardPopup.openModal();
+});
+
+const userInfo = new UserInfo({ profileTitle, profileDescription });
+
+//Profile Edit Popup
+const newProfileEdit = new PopupWithForm(
+  "#profile-edit-modal",
+  handleProfileEditSubmit
+);
+newProfileEdit.setEventListeners();
 
 /*                     Event Listeners                          */
 
 profileEditBtn.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent.trim();
-  profileDescriptionInput.value = profileDescription.textContent.trim();
-  openModal(profileEditModal);
+  const userData = userInfo.getUserInfo();
+  profileTitleInput.value = userData.name.trim();
+  profileDescriptionInput.value = userData.description.trim();
+  newProfileEdit.openModal();
 });
-
-addNewCardButton.addEventListener("click", () => openModal(addNewCardModal));
-
-initialCards.forEach((data) => {
-  renderCard(data);
-});
-
-// Form Listeners
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
