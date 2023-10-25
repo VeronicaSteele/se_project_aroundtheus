@@ -5,7 +5,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
-import Popup from "../components/Popup";
+import Api from "../components/API.js";
 
 const initialCards = [
   {
@@ -63,17 +63,6 @@ const imagePreview = previewImageModal.querySelector(
 const imageCaption = previewImageModal.querySelector(
   ".modal__image-container_heading"
 );
-const section = new Section(
-  {
-    items: initialCards,
-    renderer: (cardData) => {
-      const cardEl = renderCard(cardData);
-      section.addItem(cardEl);
-    },
-  },
-  ".card__item"
-);
-section.renderItems();
 
 // Buttons//
 
@@ -82,6 +71,36 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 const profileEditBtn = document.querySelector("#profile-edit-button");
 
 /*                    Functions                                  */
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "9998c541-50a6-4c3b-9b08-c9921babcb2b",
+    "Content-Type": "application/json",
+  },
+});
+
+let section;
+
+// Usage example
+api
+  .getInitialCards()
+  .then((cards) => {
+    section = new Section(
+      {
+        items: cards,
+        renderer: (cardData) => {
+          const cardEl = renderCard(cardData);
+          section.addItem(cardEl);
+        },
+      },
+      ".card__item"
+    );
+    section.renderItems();
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 //                Validation
 
@@ -119,9 +138,11 @@ function handleProfileEditSubmit(inputValues) {
 }
 
 function handleAddCardFormSubmit(inputValues) {
-  const cardEl = renderCard(inputValues);
-  section.addItem(cardEl);
-  newCardPopup.closeModal();
+  api.addNewCard(inputValues).then((card) => {
+    const cardEl = renderCard(card);
+    section.addItem(cardEl);
+    newCardPopup.closeModal();
+  });
 }
 
 //New Image Popup
