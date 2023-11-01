@@ -26,7 +26,16 @@
           <div class="profile__info">
             <div class="profile__name">
               <h1 class="profile__title" id="profile__title">
-                Jacques Cousteau
+                <input
+                  type="text"
+                  name="title"
+                  class="profile__title-input"
+                  placeholder="Name"
+                  id="title-input"
+                  minlength="2"
+                  maxlength="40"
+                  required
+                />
               </h1>
               <button
                 class="profile__edit-button"
@@ -36,7 +45,16 @@
             </div>
 
             <p class="profile__description" id="profile__description">
-              Explorer
+              <input
+                type="text"
+                name="title"
+                class="profile__description-input"
+                placeholder="title"
+                id="title-input"
+                minlength="2"
+                maxlength="40"
+                required
+              />
             </p>
           </div>
           <button class="profile__add-button" type="button"></button>
@@ -49,6 +67,26 @@
         </footer>
       </main>
     </div>
+    <!--edit profile img modal-->
+    <div class="modal" id="update-avatar-modal">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+        <p class="modal__heading">Edit profile photo</p>
+        <form class="form modal__form" name="update-avatar-form" novalidate>
+          <input
+            type="url"
+            name="image"
+            id="avatar-url"
+            class="modal__input"
+            placeholder="Image URL"
+            required
+          />
+          <span class="modal__error"></span>
+          <button type="submit" class="modal__button">Save</button>
+        </form>
+      </div>
+    </div>
+
     <!--edit profile modal-->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
