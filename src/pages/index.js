@@ -102,7 +102,13 @@ function handleProfileEditSubmit(inputValues) {
 }
 
 function handleAvatarSubmit(inputValues) {
-  console.log(inputValues);
+  const avatarData = {
+    avatarLink: inputValues.newAvatarLink,
+  };
+
+  console.log(avatarData);
+
+  updateAvatar(avatarData);
 }
 
 function handleAddCardFormSubmit(inputValues) {
@@ -147,13 +153,13 @@ newProfileEdit.setEventListeners();
 
 //Avatar Edit Popup
 const newAvatarEdit = new PopupWithForm(
-  "#edit-avatar-modal"
-  //handleAvatarSubmit
+  "#edit-avatar-modal",
+  handleAvatarSubmit
 );
 newAvatarEdit.setEventListeners();
 
 // Validation Popup
-const deleteCardModal - new PopupWithForm("#delete-card-modal")
+const deleteCardModal = new PopupWithForm("#delete-card-modal");
 /*                     Event Listeners                          */
 
 profileEditBtn.addEventListener("click", () => {
