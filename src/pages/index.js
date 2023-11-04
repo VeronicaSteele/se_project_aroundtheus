@@ -7,38 +7,6 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/API.js";
 
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-  },
-];
-
-const cardData = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
-
 //                    Constants                                     //
 //const cardsWrap = document.querySelector(".card__list");
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -125,16 +93,17 @@ const addCardFormValidator = new FormValidator(
 addCardFormValidator.enableValidation();
 
 function handleProfileEditSubmit(inputValues) {
-  //const newDescription = inputValues.description;
-  // const newName = inputValues.name;
   console.log(inputValues);
   userInfo.setUserInfo({
     name: inputValues.title,
     description: inputValues.description,
   });
-  console.log("test");
+
   newProfileEdit.closeModal();
-  console.log("test2");
+}
+
+function handleAvatarSubmit(inputValues) {
+  console.log(inputValues);
 }
 
 function handleAddCardFormSubmit(inputValues) {
@@ -177,6 +146,12 @@ const newProfileEdit = new PopupWithForm(
 );
 newProfileEdit.setEventListeners();
 
+//Avatar Edit Popup
+const newAvatarEdit = new PopupWithForm(
+  "#edit-avatar-modal"
+  //handleAvatarSubmit
+);
+newProfileEdit.setEventListeners();
 /*                     Event Listeners                          */
 
 profileEditBtn.addEventListener("click", () => {

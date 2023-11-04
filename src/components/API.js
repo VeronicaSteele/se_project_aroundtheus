@@ -4,80 +4,51 @@ export default class Api {
     this.headers = headers;
   }
 
-  getInitialCards = async () => {
+  static async sendRequest(url, method, headers, body) {
     try {
-      const response = await fetch(`${this.baseUrl}/cards`, {
-        headers: this.headers,
+      const response = await fetch(url, {
+        method,
+        headers,
+        body: body ? JSON.stringify(body) : null,
       });
+
       if (!response.ok) {
-        throw new Error(`Failed to fetch initial cards: ${response.status}`);
+        throw new Error(`Request failed with status: ${response.status}`);
       }
+
       return await response.json();
     } catch (error) {
-      throw new Error(`Error in getInitialCards: ${error.message}`);
+      throw new Error(`Request error: ${error.message}`);
     }
+  }
+
+  getInitialCards = async () => {
+    const url = `https://around-api.en.tripleten-services.com/v1/cards`;
+    return Api.sendRequest(url, "GET", this.headers);
   };
 
   addNewCard = async (card) => {
-    try {
-      const response = await fetch(`${this.baseUrl}/cards`, {
-        headers: this.headers,
-        method: "POST",
-        body: JSON.stringify(card),
-      });
-      if (!response.ok) {
-        throw new Error(`Failed to fetch initial cards: ${response.status}`);
-      }
-      return await response.json();
-    } catch (error) {
-      throw new Error(`Error in getInitialCards: ${error.message}`);
-    }
+    const url = `https://around-api.en.tripleten-services.com/v1/cards`;
+    return Api.sendRequest(url, "POST", this.headers, card);
   };
 
   deleteCard = async (cardId) => {
-    try {
-      const response = await fetch(`${this.baseUrl}/cards/${cardId}`, {
-        headers: this.headers,
-        method: "DELETE",
-      });
-      if (!response.ok) {
-        throw new Error(`Failed to delete card: ${response.status}`);
-      }
-      return await response.json();
-    } catch (error) {
-      throw new Error(`Error in deleteCard: ${error.message}`);
-    }
+    const url = `https://around-api.en.tripleten-services.com/v1/cards/${cardId}`;
+    return Api.sendRequest(url, "DELETE", this.headers);
   };
 
   likeCard = async (cardId) => {
-    try {
-      const response = await fetch(`${this.baseUrl}/cards/like/${cardId}`, {
-        headers: this.headers,
-        method: "POST",
-      });
-      if (!response.ok) {
-        throw new Error(`Failed to like the card: ${response.status}`);
-      }
-      return await response.json();
-    } catch (error) {
-      throw new Error(`Error in likeCard: ${error.message}`);
-    }
+    const url = `https://around-api.en.tripleten-services.com/v1/cards/${cardId}/likes`;
+    return Api.sendRequest(url, "POST", this.headers);
   };
 
   removeLike = async (cardId) => {
-    try {
-      const response = await fetch(`${this.baseUrl}/cards/like/${cardId}`, {
-        headers: this.headers,
-        method: "DELETE",
-      });
-      if (!response.ok) {
-        throw new Error(
-          `Failed to remove like from the card: ${response.status}`
-        );
-      }
-      return await response.json();
-    } catch (error) {
-      throw new Error(`Error in removeLike: ${error.message}`);
-    }
+    const url = `https://around-api.en.tripleten-services.com/v1/cards/${cardId}/likes`;
+    return Api.sendRequest(url, "DELETE", this.headers);
+  };
+
+  updateAvatar = async (avatarData) => {
+    const url = `https://around-api.en.tripleten-services.com/v1/users/me/avatar`;
+    return Api.sendRequest(url, "PATCH", this.headers, avatarData);
   };
 }
