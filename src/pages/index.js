@@ -50,7 +50,6 @@ const api = new Api({
 
 let section;
 
-// Usage example
 api
   .getInitialCards()
   .then((cards) => {
@@ -151,7 +150,10 @@ const newAvatarEdit = new PopupWithForm(
   "#edit-avatar-modal"
   //handleAvatarSubmit
 );
-newProfileEdit.setEventListeners();
+newAvatarEdit.setEventListeners();
+
+// Validation Popup
+const deleteCardModal - new PopupWithForm("#delete-card-modal")
 /*                     Event Listeners                          */
 
 profileEditBtn.addEventListener("click", () => {
