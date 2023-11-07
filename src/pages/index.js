@@ -108,7 +108,7 @@ function handleAvatarSubmit(inputValues) {
 
   console.log(avatarData);
 
-  updateAvatar(avatarData);
+  api.updateAvatar(avatarData);
 }
 
 function handleAddCardFormSubmit(inputValues) {
