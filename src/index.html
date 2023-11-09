@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Around the US</title>
-    <link rel="icon" href="./images/favicon.ico" />
+    <link rel="icon" href="./images/favicon.ico"/>
   </head>
   <body class="page" id="page">
     <div class="page__content">
@@ -18,11 +18,14 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
+          <div class="profile__avatar-container">
+            <img
             src="<%=require('./images/jacques-cousteau(1).jpg')%>"
             alt="profile-img"
             class="profile__img"
-          />
+            />
+            <button class="profile__avatar-edit" id ="avatar-edit-button"></button>
+          </div>
           <div class="profile__info">
             <div class="profile__name">
               <h1 class="profile__title" id="profile__title">Jacques</h1>

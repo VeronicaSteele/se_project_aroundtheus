@@ -35,7 +35,7 @@ const imageCaption = previewImageModal.querySelector(
 // Buttons//
 
 const addNewCardButton = document.querySelector(".profile__add-button");
-
+const avatarEditButton = document.querySelector("#avatar-edit-button");
 const profileEditBtn = document.querySelector("#profile-edit-button");
 
 /*                    Functions                                  */
