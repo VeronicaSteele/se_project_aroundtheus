@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Around the US</title>
-    <link rel="icon" href="./images/favicon.ico"/>
+    <link rel="icon" href="./images/favicon.ico" />
   </head>
   <body class="page" id="page">
     <div class="page__content">
@@ -20,11 +20,14 @@
         <section class="profile page__section">
           <div class="profile__avatar-container">
             <img
-            src="<%=require('./images/jacques-cousteau(1).jpg')%>"
-            alt="profile-img"
-            class="profile__img"
+              src="<%=require('./images/jacques-cousteau(1).jpg')%>"
+              alt="profile-img"
+              class="profile__img"
             />
-            <button class="profile__avatar-edit" id ="avatar-edit-button"></button>
+            <button
+              class="profile__avatar-edit"
+              id="avatar-edit-button"
+            ></button>
           </div>
           <div class="profile__info">
             <div class="profile__name">
@@ -54,10 +57,10 @@
     <div class="modal" id="edit-avatar-modal">
       <div class="modal__container">
         <button
-        class="modal__close"
-        id="modal-close-button"
-        type="button"
-      ></button>
+          class="modal__close"
+          id="modal-close-button"
+          type="button"
+        ></button>
         <p class="modal__heading">Edit profile photo</p>
         <form class="modal__form" name="update-avatar-form" novalidate>
           <label class="modal__label">
@@ -71,16 +74,7 @@
             />
             <span class="modal__error" id="url-input-error"></span>
           </label>
-          <button
-          class="modal__button"
-          id="avatar-modal-button"
-          type="submit"
-          disabled
-        >
-          <span class="modal__button-save" id="avatar-save-button"
-            >Save</span
-          >
-          
+          <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
     </div>
@@ -167,7 +161,7 @@
       <div class="modal__overlay"></div>
     </div>
     <!--end add card modal-->
-    <!--delete card modal--> 
+    <!--delete card modal-->
     <div class="modal" id="delete-card-modal">
       <div class="modal__container modal__delete-container">
         <button class="modal__close modal__close-button_delete-form"></button>
