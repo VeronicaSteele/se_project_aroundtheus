@@ -53,19 +53,26 @@
     <!--edit avatar modal-->
     <div class="modal" id="edit-avatar-modal">
       <div class="modal__container">
-        <button class="modal__close"></button>
+        <button
+        class="modal__close"
+        id="modal-close-button"
+        type="button"
+      ></button>
         <p class="modal__heading">Edit profile photo</p>
         <form class="modal__form" name="update-avatar-form" novalidate>
-          <input
-            type="url"
-            name="image"
-            id="avatar-url"
-            class="modal__input"
-            placeholder="Image URL"
-            required
-          />
+          <label class="modal__label">
+            <input
+              type="url"
+              name="link"
+              class="modal__input"
+              placeholder="Image URL"
+              id="avatar-url"
+              required
+            />
+            <span class="modal__error" id="url-input-error"></span>
+          </label>
           <button
-          class="modal__button modal__button-submit modal__button_disabled"
+          class="modal__button"
           id="avatar-modal-button"
           type="submit"
           disabled
@@ -73,6 +80,7 @@
           <span class="modal__button-save" id="avatar-save-button"
             >Save</span
           >
+          
         </form>
       </div>
     </div>

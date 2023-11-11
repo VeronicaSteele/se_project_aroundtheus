@@ -156,7 +156,9 @@ const newAvatarEdit = new PopupWithForm(
   "#edit-avatar-modal",
   handleAvatarSubmit
 );
-newAvatarEdit.setEventListeners();
+avatarEditButton.addEventListener("click", () => {
+  newAvatarEdit.openModal();
+});
 
 // Validation Popup
 const deleteCardModal = new PopupWithForm("#delete-card-modal");
