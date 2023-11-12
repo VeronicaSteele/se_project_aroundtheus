@@ -31,6 +31,7 @@ const imagePreview = previewImageModal.querySelector(
 const imageCaption = previewImageModal.querySelector(
   ".modal__image-container_heading"
 );
+const 
 
 // Buttons//
 
@@ -105,9 +106,7 @@ function handleAvatarSubmit(inputValues) {
   const avatarData = {
     avatarLink: inputValues.newAvatarLink,
   };
-
   console.log(avatarData);
-
   api.updateAvatar(avatarData);
 }
 
@@ -159,6 +158,10 @@ const newAvatarEdit = new PopupWithForm(
 avatarEditButton.addEventListener("click", () => {
   newAvatarEdit.openModal();
 });
+const editAvatarValidator = new FormValidator(
+  validationSettings,
+  editProfileForm
+);
 
 // Validation Popup
 const deleteCardModal = new PopupWithForm("#delete-card-modal");
