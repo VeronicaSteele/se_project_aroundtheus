@@ -4,51 +4,72 @@ export default class Api {
     this.headers = headers;
   }
 
-  static async sendRequest(url, method, headers, body) {
-    try {
-      const response = await fetch(url, {
-        method,
-        headers,
-        body: body ? JSON.stringify(body) : null,
-      });
-
-      if (!response.ok) {
-        throw new Error(`Request failed with status: ${response.status}`);
-      }
-
-      return await response.json();
-    } catch (error) {
-      throw new Error(`Request error: ${error.message}`);
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
     }
+    return Promise.reject(`Error: ${res.status}`);
+  }
+  _request(url, options) {
+    return fetch(url, options).then(this._checkResponse);
   }
 
-  getInitialCards = async () => {
-    const url = `https://around-api.en.tripleten-services.com/v1/cards`;
-    return Api.sendRequest(url, "GET", this.headers);
-  };
+  getInitialCards() {
+    return this._request(`${this.baseUrl}/cards`, { headers: this.headers });
+  }
 
-  addNewCard = async (card) => {
-    const url = `https://around-api.en.tripleten-services.com/v1/cards`;
-    return Api.sendRequest(url, "POST", this.headers, card);
-  };
+  addNewCard(data) {
+    return this._request(`${this.baseUrl}/cards`, {
+      method: "POST",
+      headers: this.headers,
+      body: JSON.stringify(data),
+    });
+  }
 
-  deleteCard = async (cardId) => {
-    const url = `https://around-api.en.tripleten-services.com/v1/cards/${cardId}`;
-    return Api.sendRequest(url, "DELETE", this.headers);
-  };
+  deleteCard(cardid) {
+    return this._request(`${this.baseUrl}/cards/${cardid}`, {
+      method: "DELETE",
+      headers: this.headers,
+    });
+  }
 
-  likeCard = async (cardId) => {
-    const url = `https://around-api.en.tripleten-services.com/v1/cards/${cardId}/likes`;
-    return Api.sendRequest(url, "POST", this.headers);
-  };
+  likeCard(cardid) {
+    return this._request(`${this.baseUrl}/cards/${cardid}/likes`, {
+      method: "PUT",
+      headers: this.headers,
+    });
+  }
 
-  removeLike = async (cardId) => {
-    const url = `https://around-api.en.tripleten-services.com/v1/cards/${cardId}/likes`;
-    return Api.sendRequest(url, "DELETE", this.headers);
-  };
+  removeLike(isLiked, cardid) {
+    if (isLiked) {
+      return this.removeLike(cardid);
+    } else {
+      return this.likeCard(cardid);
+    }
+  }
+  getUserInfo() {
+    return this._request(`${this.baseUrl}/users/me`, {
+      headers: this.headers,
+    });
+  }
+  editUserInfo(values) {
+    return this._request(`${this.baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this.headers,
+      body: JSON.stringify({
+        name: values.name,
+        about: values.about,
+      }),
+    });
+  }
 
-  updateAvatar = async (avatarData) => {
-    const url = `https://around-api.en.tripleten-services.com/v1/users/me/avatar`;
-    return Api.sendRequest(url, "PATCH", this.headers, avatarData);
-  };
+  updateAvatar(image) {
+    return this._request(`${this.baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar: image,
+      }),
+    });
+  }
 }

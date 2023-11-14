@@ -7,7 +7,7 @@ export default class PopupWithConfirmation extends Popup {
   }
 
   setConfirmation(action) {
-    this._handleYesAction = action;
+    this._setConfirmation = action;
   }
 
   setEventListeners() {

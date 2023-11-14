@@ -31,7 +31,7 @@ const imagePreview = previewImageModal.querySelector(
 const imageCaption = previewImageModal.querySelector(
   ".modal__image-container_heading"
 );
-const 
+const avatar = document.querySelector("#avatar-url");
 
 // Buttons//
 
@@ -104,9 +104,9 @@ function handleProfileEditSubmit(inputValues) {
 
 function handleAvatarSubmit(inputValues) {
   const avatarData = {
-    avatarLink: inputValues.newAvatarLink,
+    avatar: inputValues.link,
   };
-  console.log(avatarData);
+  //console.log(avatarData);
   api.updateAvatar(avatarData);
 }
 
@@ -141,7 +141,7 @@ addNewCardButton.addEventListener("click", () => {
   newCardPopup.openModal();
 });
 
-const userInfo = new UserInfo({ profileTitle, profileDescription });
+//const userInfo = new UserInfo({ profileTitle, profileDescription });
 
 //Profile Edit Popup
 const newProfileEdit = new PopupWithForm(
