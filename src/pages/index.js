@@ -18,7 +18,6 @@ const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card__list");
-
 const cardListEl = document.querySelector(".card__item");
 const addNewCardModal = document.querySelector("#add-card-modal");
 const addCardFormElement = addNewCardModal.querySelector("#add-card-form");
@@ -38,6 +37,7 @@ const avatar = document.querySelector("#avatar-url");
 const addNewCardButton = document.querySelector(".profile__add-button");
 const avatarEditButton = document.querySelector("#avatar-edit-button");
 const profileEditBtn = document.querySelector("#profile-edit-button");
+const avatarSaveButton = document.querySelector("#save-avatar-update");
 
 /*                    Functions                                  */
 
@@ -121,7 +121,6 @@ function handleAddCardFormSubmit(inputValues) {
 //New Image Popup
 const newImagePopup = new PopupWithImage("#view-card-modal");
 newImagePopup.setEventListeners();
-
 function renderCard(data) {
   const card = new Card(data, "#card-template", handleCardClick);
   return card.getView();
@@ -162,7 +161,11 @@ const editAvatarValidator = new FormValidator(
   validationSettings,
   editProfileForm
 );
-
+avatarSaveButton.addEventListener("click", () => {
+  newAvatarEdit.resetValidation();
+  newAvatarEdit.closeModal();
+  updateAvatar(url);
+});
 // Validation Popup
 const deleteCardModal = new PopupWithForm("#delete-card-modal");
 /*                     Event Listeners                          */
