@@ -6,6 +6,7 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/API.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 //                    Constants                                     //
 //const cardsWrap = document.querySelector(".card__list");
@@ -103,11 +104,7 @@ function handleProfileEditSubmit(inputValues) {
 }
 
 function handleAvatarSubmit(inputValues) {
-  const avatarData = {
-    avatar: inputValues.link,
-  };
-  //console.log(avatarData);
-  api.updateAvatar(avatarData);
+  api.updateAvatar(inputValues.link);
 }
 
 function handleAddCardFormSubmit(inputValues) {
@@ -162,12 +159,13 @@ const editAvatarValidator = new FormValidator(
   editProfileForm
 );
 avatarSaveButton.addEventListener("click", () => {
-  newAvatarEdit.resetValidation();
+  // newAvatarEdit.resetValidation();
   newAvatarEdit.closeModal();
-  updateAvatar(url);
+  // updateAvatar(url);
 });
 // Validation Popup
-const deleteCardModal = new PopupWithForm("#delete-card-modal");
+//const deleteCardModal = new PopupWithConfirmation("#delete-card-modal");
+
 /*                     Event Listeners                          */
 
 profileEditBtn.addEventListener("click", () => {
