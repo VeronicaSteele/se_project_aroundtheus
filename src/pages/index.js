@@ -32,13 +32,16 @@ const imageCaption = previewImageModal.querySelector(
   ".modal__image-container_heading"
 );
 const avatar = document.querySelector("#avatar-url");
+const deleteCardModal = document.querySelector("#delete-card-modal");
 
 // Buttons//
 
 const addNewCardButton = document.querySelector(".profile__add-button");
+const avatarEditImg = document.querySelector(".profile__img");
 const avatarEditButton = document.querySelector("#avatar-edit-button");
 const profileEditBtn = document.querySelector("#profile-edit-button");
 const avatarSaveButton = document.querySelector("#save-avatar-update");
+const deleteCardButton = document.querySelector(".card__delete-button"); // we don't use this variable
 
 /*                    Functions                                  */
 
@@ -49,6 +52,12 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
+
+// UserInfo
+const userInfo = new UserInfo(profileTitle, profileDescription, avatarEditImg);
+
+// delete confirmation modal
+const deletePopup = new PopupWithConfirmation("#delete-card-modal");
 
 let section;
 
@@ -104,7 +113,9 @@ function handleProfileEditSubmit(inputValues) {
 }
 
 function handleAvatarSubmit(inputValues) {
-  api.updateAvatar(inputValues.link);
+  api.updateAvatar(inputValues.link).then((user) => {
+    userInfo.setAvatarImg(user);
+  });
 }
 
 function handleAddCardFormSubmit(inputValues) {
@@ -115,11 +126,27 @@ function handleAddCardFormSubmit(inputValues) {
   });
 }
 
+function handleDeleteClick(/* here we receive data about the card from Card.js */) {
+  deletePopup.openModal();
+  /**
+   * the goal is to provide the data from the card we received here as an argument to the confirmation modal
+   * that will allow you to send the remove request to the server with an exact card data you need
+   * plan:
+   * 1. make an API request to the server to reove the card
+   * 2. in the ".then" szection to the previous request we need to delete the card from DOM
+   */
+}
+
 //New Image Popup
 const newImagePopup = new PopupWithImage("#view-card-modal");
 newImagePopup.setEventListeners();
 function renderCard(data) {
-  const card = new Card(data, "#card-template", handleCardClick);
+  const card = new Card(
+    data,
+    "#card-template",
+    handleCardClick,
+    handleDeleteClick
+  );
   return card.getView();
 }
 
@@ -136,8 +163,6 @@ addNewCardButton.addEventListener("click", () => {
   addCardFormValidator.resetValidation();
   newCardPopup.openModal();
 });
-
-//const userInfo = new UserInfo({ profileTitle, profileDescription });
 
 //Profile Edit Popup
 const newProfileEdit = new PopupWithForm(
@@ -158,13 +183,19 @@ const editAvatarValidator = new FormValidator(
   validationSettings,
   editProfileForm
 );
-avatarSaveButton.addEventListener("click", () => {
-  // newAvatarEdit.resetValidation();
-  newAvatarEdit.closeModal();
-  // updateAvatar(url);
-});
+
+const avatarImage = document.getElementById("avatarImage");
+if (avatarImage) {
+  avatarImage.src = newAvatarUrl; // Do I need to define this/how??
+} else {
+  console.error("Avatar image element not found");
+}
+// avatarSaveButton.addEventListener("click", () => {
+//   // newAvatarEdit.resetValidation();
+//   newAvatarEdit.closeModal();
+//   // updateAvatar(url);
+// });
 // Validation Popup
-//const deleteCardModal = new PopupWithConfirmation("#delete-card-modal");
 
 /*                     Event Listeners                          */
 

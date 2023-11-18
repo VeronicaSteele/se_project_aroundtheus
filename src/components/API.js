@@ -4,11 +4,16 @@ export default class Api {
     this.headers = headers;
   }
 
-  _checkResponse(res) {
-    if (res.ok) {
-      return res.json();
+  _checkResponse(response) {
+    if (!response.ok) {
+      console.error(
+        `HTTP error! Status: ${response.status}, Text: ${response.statusText}`
+      );
+      throw new Error(
+        `HTTP error! Status: ${response.status}, Text: ${response.statusText}`
+      );
     }
-    return Promise.reject(`Error: ${res.status}`);
+    return response.json();
   }
   _request(url, options) {
     return fetch(url, options).then(this._checkResponse);
@@ -71,5 +76,9 @@ export default class Api {
         avatar: image,
       }),
     });
+    // .catch((error) => {
+    //   console.error("Error updating avatar:", error);
+    //   throw error;
+    // });
   }
 }

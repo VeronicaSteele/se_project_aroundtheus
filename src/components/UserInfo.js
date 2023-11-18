@@ -1,9 +1,10 @@
 export default class UserInfo {
-  constructor({ profileTitle, profileDescription }) {
+  constructor(profileTitle, profileDescription, avatar) {
     this._profileTitle = profileTitle;
     this._profileDescription = profileDescription;
     this._avatar = avatar;
   }
+
   getUserInfo() {
     const userInfo = {
       name: this._profileTitle.textContent,
@@ -11,11 +12,14 @@ export default class UserInfo {
     };
     return userInfo;
   }
-  setUserInfo({ name, description }) {
+
+  // TODO: think how can you merge setUserInfo method and setAvatarImg method, in the end of the day one method is better
+  setUserInfo({ name, about }) {
     this._profileTitle.textContent = name;
     this._profileDescription.textContent = description;
   }
-  setAvatarImg(link) {
-    this.avatar.src = link;
+
+  setAvatarImg({ avatar }) {
+    this._avatar.src = avatar;
   }
 }

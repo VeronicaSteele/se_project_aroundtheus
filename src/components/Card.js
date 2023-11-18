@@ -1,9 +1,10 @@
 export default class Card {
-  constructor(data, cardSelector, handleCardClick) {
+  constructor(data, cardSelector, handleCardClick, handleDeleteClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
+    this._handleDeleteClick = handleDeleteClick;
   }
 
   _setEventListeners() {
@@ -28,8 +29,9 @@ export default class Card {
   }
 
   _handleDeleteCard() {
-    this._cardElement.remove();
-    this._cardElement = null;
+    this._handleDeleteClick(/* you need to provide data about the card, e.g. ID, because this is the data we need to delete the card */);
+    // this._cardElement.remove();
+    // this._cardElement = null;
   }
   _handleLikeIcon() {
     this._cardElement
