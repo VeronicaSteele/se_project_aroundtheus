@@ -1,6 +1,5 @@
 export default class UserInfo {
   constructor(profileTitle, profileDescription, avatar) {
-    console.log("userInfo", avatar);
     this._profileTitle = profileTitle;
     this._profileDescription = profileDescription;
     this._avatar = avatar;
@@ -21,7 +20,6 @@ export default class UserInfo {
   }
 
   setAvatarImg({ avatar }) {
-    console.log("test", avatar);
     this._avatar.src = avatar;
   }
 }

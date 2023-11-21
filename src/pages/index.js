@@ -8,8 +8,10 @@ import UserInfo from "../components/UserInfo.js";
 import Api from "../components/API.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
-//                    Constants                                     //
-//const cardsWrap = document.querySelector(".card__list");
+/*-----------------------------------------------------------------*/
+/*                          Constants                              */
+/*-----------------------------------------------------------------*/
+
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileTitle = document.querySelector("#profile__title");
 const profileDescription = document.querySelector("#profile__description");
@@ -45,7 +47,9 @@ const avatarSaveButton = document.querySelector("#save-avatar-update");
 const deleteCardButton = document.querySelector(".card__delete-button"); // we don't use this variable
 const avatarCloseButton = document.querySelector("#avatar-modal-close-button");
 
-/*                    Functions                                  */
+/*-----------------------------------------------------------------*/
+/*                             API                                 */
+/*-----------------------------------------------------------------*/
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
@@ -84,11 +88,70 @@ api
   });
 //
 api.getUserInfo().then((user) => {
-  console.log("user", user);
   userInfo.setAvatarImg({ avatar: user.avatar });
 });
+//
 
-//                Validation
+// api.editUserInfo({ name, about: description }).then((userData) => {
+//   userInfo.setUserInfo(userData.name, userData.description);
+// });
+//
+
+// api.likeCard();
+// api.removeLike();
+// api.deleteCard()
+
+/*-----------------------------------------------------------------*/
+/*                             New Instances                       */
+/*-----------------------------------------------------------------*/
+
+//New Image Popup
+const newImagePopup = new PopupWithImage("#view-card-modal");
+newImagePopup.setEventListeners();
+function renderCard(data) {
+  const card = new Card(
+    data,
+    "#card-template",
+    handleCardClick,
+    handleDeleteClick
+  );
+  return card.getView();
+}
+
+//New Card Popup
+const newCardPopup = new PopupWithForm(
+  "#add-card-modal",
+  handleAddCardFormSubmit
+);
+newCardPopup.setEventListeners();
+addNewCardButton.addEventListener("click", () => {
+  addCardFormValidator.resetValidation();
+  newCardPopup.openModal();
+});
+
+//Profile Edit Popup
+const newProfileEdit = new PopupWithForm(
+  "#profile-edit-modal",
+  handleProfileEditSubmit
+);
+newProfileEdit.setEventListeners();
+
+//Avatar Edit Popup
+const newAvatarEdit = new PopupWithForm(
+  "#edit-avatar-modal",
+  handleAvatarSubmit
+);
+avatarEditButton.addEventListener("click", () => {
+  newAvatarEdit.openModal();
+});
+const editAvatarValidator = new FormValidator(
+  validationSettings,
+  editProfileForm
+);
+
+/*-----------------------------------------------------------------*/
+/*                             Validation                          */
+/*-----------------------------------------------------------------*/
 
 const validationSettings = {
   inputSelector: ".modal__input",
@@ -109,6 +172,10 @@ const addCardFormValidator = new FormValidator(
   addCardFormElement
 );
 addCardFormValidator.enableValidation();
+
+/*-----------------------------------------------------------------*/
+/*                   "Handle" Functions                            */
+/*-----------------------------------------------------------------*/
 
 function handleProfileEditSubmit(inputValues) {
   console.log(inputValues);
@@ -149,65 +216,23 @@ function handleDeleteClick(
    */
 }
 
-//New Image Popup
-const newImagePopup = new PopupWithImage("#view-card-modal");
-newImagePopup.setEventListeners();
-function renderCard(data) {
-  const card = new Card(
-    data,
-    "#card-template",
-    handleCardClick,
-    handleDeleteClick
-  );
-  return card.getView();
-}
-
 function handleCardClick(name, link) {
   newImagePopup.openModal({ name, link });
 }
-//New Card Popup
-const newCardPopup = new PopupWithForm(
-  "#add-card-modal",
-  handleAddCardFormSubmit
-);
-newCardPopup.setEventListeners();
-addNewCardButton.addEventListener("click", () => {
-  addCardFormValidator.resetValidation();
-  newCardPopup.openModal();
-});
 
-//Profile Edit Popup
-const newProfileEdit = new PopupWithForm(
-  "#profile-edit-modal",
-  handleProfileEditSubmit
-);
-newProfileEdit.setEventListeners();
+// const avatarImage = document.getElementById("avatarImage");
+// if (avatarImage) {
+//   avatarImage.src = newAvatarUrl;
+// } else {
+//   console.error("Avatar image element not found");
+// }
+// avatarCloseButton.addEventListener("click", () => {
+//   newAvatarEdit.closeModal();
+// });
 
-//Avatar Edit Popup
-const newAvatarEdit = new PopupWithForm(
-  "#edit-avatar-modal",
-  handleAvatarSubmit
-);
-avatarEditButton.addEventListener("click", () => {
-  newAvatarEdit.openModal();
-});
-const editAvatarValidator = new FormValidator(
-  validationSettings,
-  editProfileForm
-);
-
-const avatarImage = document.getElementById("avatarImage");
-if (avatarImage) {
-  avatarImage.src = newAvatarUrl;
-} else {
-  console.error("Avatar image element not found");
-}
-avatarCloseButton.addEventListener("click", () => {
-  newAvatarEdit.closeModal();
-});
-
-/*                     Event Listeners                          */
-
+/*-----------------------------------------------------------------*/
+/*                      Event Listeners                            */
+/*-----------------------------------------------------------------*/
 profileEditBtn.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
   profileTitleInput.value = userData.name.trim();
