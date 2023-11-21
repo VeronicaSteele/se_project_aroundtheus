@@ -33,15 +33,17 @@ const imageCaption = previewImageModal.querySelector(
 );
 const avatar = document.querySelector("#avatar-url");
 const deleteCardModal = document.querySelector("#delete-card-modal");
+const avatarEditImg = document.querySelector(".profile__img");
+const editProfileForm = document.querySelector("#profile-edit-form");
 
 // Buttons//
 
 const addNewCardButton = document.querySelector(".profile__add-button");
-const avatarEditImg = document.querySelector(".profile__img");
 const avatarEditButton = document.querySelector("#avatar-edit-button");
 const profileEditBtn = document.querySelector("#profile-edit-button");
 const avatarSaveButton = document.querySelector("#save-avatar-update");
 const deleteCardButton = document.querySelector(".card__delete-button"); // we don't use this variable
+const avatarCloseButton = document.querySelector("#avatar-modal-close-button");
 
 /*                    Functions                                  */
 
@@ -80,12 +82,7 @@ api
   .catch((error) => {
     console.error(error);
   });
-
-//   .updateAvatar()
-// .then((avatar) =>{
-//   updateAvatar()
-// })
-
+//
 api.getUserInfo().then((user) => {
   console.log("user", user);
   userInfo.setAvatarImg({ avatar: user.avatar });
@@ -100,7 +97,7 @@ const validationSettings = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
-const editProfileForm = document.querySelector("#profile-edit-form");
+
 const editProfileFormValidator = new FormValidator(
   validationSettings,
   editProfileForm
@@ -142,6 +139,7 @@ function handleDeleteClick(
   data /* here we receive data about the card from Card.js */
 ) {
   deletePopup.openModal();
+  deleteCardButton(data);
   /**
    * the goal is to provide the data from the card we received here as an argument to the confirmation modal
    * that will allow you to send the remove request to the server with an exact card data you need
@@ -204,12 +202,9 @@ if (avatarImage) {
 } else {
   console.error("Avatar image element not found");
 }
-// avatarSaveButton.addEventListener("click", () => {
-//   // newAvatarEdit.resetValidation();
-//   newAvatarEdit.closeModal();
-//   // updateAvatar(url);
-// });
-// Validation Popup
+avatarCloseButton.addEventListener("click", () => {
+  newAvatarEdit.closeModal();
+});
 
 /*                     Event Listeners                          */
 
