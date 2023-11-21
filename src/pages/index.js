@@ -76,9 +76,20 @@ api
     );
     section.renderItems();
   })
+
   .catch((error) => {
     console.error(error);
   });
+
+//   .updateAvatar()
+// .then((avatar) =>{
+//   updateAvatar()
+// })
+
+api.getUserInfo().then((user) => {
+  console.log("user", user);
+  userInfo.setAvatarImg({ avatar: user.avatar });
+});
 
 //                Validation
 
@@ -116,6 +127,7 @@ function handleAvatarSubmit(inputValues) {
   api.updateAvatar(inputValues.link).then((user) => {
     userInfo.setAvatarImg(user);
   });
+  newAvatarEdit.closeModal();
 }
 
 function handleAddCardFormSubmit(inputValues) {
@@ -126,14 +138,16 @@ function handleAddCardFormSubmit(inputValues) {
   });
 }
 
-function handleDeleteClick(/* here we receive data about the card from Card.js */) {
+function handleDeleteClick(
+  data /* here we receive data about the card from Card.js */
+) {
   deletePopup.openModal();
   /**
    * the goal is to provide the data from the card we received here as an argument to the confirmation modal
    * that will allow you to send the remove request to the server with an exact card data you need
    * plan:
-   * 1. make an API request to the server to reove the card
-   * 2. in the ".then" szection to the previous request we need to delete the card from DOM
+   * 1. make an API request to the server to remove the card
+   * 2. in the ".then" section to the previous request we need to delete the card from DOM
    */
 }
 
@@ -186,7 +200,7 @@ const editAvatarValidator = new FormValidator(
 
 const avatarImage = document.getElementById("avatarImage");
 if (avatarImage) {
-  avatarImage.src = newAvatarUrl; // Do I need to define this/how??
+  avatarImage.src = newAvatarUrl;
 } else {
   console.error("Avatar image element not found");
 }
