@@ -39,21 +39,17 @@ export default class Api {
   }
 
   likeCard = (cardid) => {
-    console.log("cardID", cardid);
-    // console.log("request", this._request);
-    console.log({ this: this });
     return this._request(`${this.baseUrl}/cards/${cardid}/likes`, {
       method: "PUT",
       headers: this.headers,
     });
   };
 
-  removeLike(isLiked, cardid) {
-    if (isLiked) {
-      return this.likeCard(cardid);
-    } else {
-      return this.likeCard(cardid);
-    }
+  removeLike(cardid) {
+    return this._request(`${this.baseUrl}/cards${cardid}/likes`, {
+      method: "DELETE",
+      headers: this.headers,
+    });
   }
 
   getUserInfo() {
