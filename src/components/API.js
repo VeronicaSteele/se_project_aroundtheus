@@ -47,11 +47,12 @@ export default class Api {
 
   removeLike(isLiked, cardid) {
     if (isLiked) {
-      return this.removeLike(cardid);
+      return this.likeCard(cardid);
     } else {
       return this.likeCard(cardid);
     }
   }
+
   getUserInfo() {
     return this._request(`${this.baseUrl}/users/me`, {
       headers: this.headers,

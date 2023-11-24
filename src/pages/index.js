@@ -38,7 +38,7 @@ const deleteCardModal = document.querySelector("#delete-card-modal");
 const avatarEditImg = document.querySelector(".profile__img");
 const editProfileForm = document.querySelector("#profile-edit-form");
 
-// Buttons//
+/*                           Buttons                               */
 
 const addNewCardButton = document.querySelector(".profile__add-button");
 const avatarEditButton = document.querySelector("#avatar-edit-button");
@@ -102,6 +102,29 @@ api.getUserInfo().then((user) => {
 // api.deleteCard()
 
 /*-----------------------------------------------------------------*/
+/*                             Validation                          */
+/*-----------------------------------------------------------------*/
+
+const validationSettings = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const editProfileFormValidator = new FormValidator(
+  validationSettings,
+  editProfileForm
+);
+editProfileFormValidator.enableValidation();
+
+const addCardFormValidator = new FormValidator(
+  validationSettings,
+  addCardFormElement
+);
+addCardFormValidator.enableValidation();
+/*-----------------------------------------------------------------*/
 /*                             New Instances                       */
 /*-----------------------------------------------------------------*/
 
@@ -113,10 +136,28 @@ function renderCard(data) {
     data,
     "#card-template",
     handleCardClick,
-    handleDeleteClick
+    handleDeleteClick,
+    handleLikeClick
   );
   return card.getView();
 }
+
+function handleLikeClick(id, isLiked) {
+  const action = isLiked ? api.removeLike : api.likeCard;
+
+  action(id)
+    .then(() => {
+      card.handleLikeIcon();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
+// need an if/else statement that checks whether the card is currently liked or not.
+//hint: isLiked is true then we want to tell the server to remove a like
+// else we tell the server to remove the like
+// when finished, (inside .then) update view of heart button
 
 //New Card Popup
 const newCardPopup = new PopupWithForm(
@@ -148,30 +189,6 @@ const editAvatarValidator = new FormValidator(
   validationSettings,
   editProfileForm
 );
-
-/*-----------------------------------------------------------------*/
-/*                             Validation                          */
-/*-----------------------------------------------------------------*/
-
-const validationSettings = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
-
-const editProfileFormValidator = new FormValidator(
-  validationSettings,
-  editProfileForm
-);
-editProfileFormValidator.enableValidation();
-
-const addCardFormValidator = new FormValidator(
-  validationSettings,
-  addCardFormElement
-);
-addCardFormValidator.enableValidation();
 
 /*-----------------------------------------------------------------*/
 /*                   "Handle" Functions                            */
