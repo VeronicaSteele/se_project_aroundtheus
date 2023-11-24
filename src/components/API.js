@@ -38,14 +38,15 @@ export default class Api {
     });
   }
 
-  likeCard(cardid) {
+  likeCard = (cardid) => {
     console.log("cardID", cardid);
-    console.log("request", this._request);
+    // console.log("request", this._request);
+    console.log({ this: this });
     return this._request(`${this.baseUrl}/cards/${cardid}/likes`, {
       method: "PUT",
       headers: this.headers,
     });
-  }
+  };
 
   removeLike(isLiked, cardid) {
     if (isLiked) {

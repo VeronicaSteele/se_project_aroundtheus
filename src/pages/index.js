@@ -145,6 +145,7 @@ function renderCard(data) {
 function handleLikeClick(id, isLiked) {
   console.log("isLiked", isLiked);
   const action = isLiked ? api.removeLike : api.likeCard;
+  debugger;
   action(id)
     .then(() => {
       card.handleLikeIcon();
