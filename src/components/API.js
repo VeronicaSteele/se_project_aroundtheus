@@ -39,6 +39,8 @@ export default class Api {
   }
 
   likeCard(cardid) {
+    console.log("cardID", cardid);
+    console.log("request", this._request);
     return this._request(`${this.baseUrl}/cards/${cardid}/likes`, {
       method: "PUT",
       headers: this.headers,
