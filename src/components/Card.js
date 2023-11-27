@@ -69,7 +69,6 @@ export default class Card {
     this._likeButton = this._cardElement.querySelector(".card__like-button");
     this.renderLikes();
     this._setEventListeners();
-    //return the card
     return this._cardElement;
   }
 }
