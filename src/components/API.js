@@ -46,7 +46,7 @@ export default class Api {
   };
 
   removeLike(cardid) {
-    return this._request(`${this.baseUrl}/cards${cardid}/likes`, {
+    return this._request(`${this.baseUrl}/cards/${cardid}/likes`, {
       method: "DELETE",
       headers: this.headers,
     });

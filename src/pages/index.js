@@ -142,13 +142,13 @@ function renderCard(data) {
   return card.getView();
 }
 
-function handleLikeClick(id, isLiked) {
-  console.log("isLiked", isLiked);
-  const action = isLiked ? api.removeLike.bind(api) : api.likeCard.bind(api);
-  // debugger;
-  action(id)
-    .then(() => {
-      card.handleLikeIcon();
+function handleLikeClick(card) {
+  const action = card._isLiked
+    ? api.removeLike.bind(api)
+    : api.likeCard.bind(api);
+  action(card._id)
+    .then((res) => {
+      card.updateLikes(res.isLiked);
     })
     .catch((err) => {
       console.error(err);
