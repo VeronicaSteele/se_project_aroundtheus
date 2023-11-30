@@ -89,7 +89,9 @@ api
 //
 api.getUserInfo().then((user) => {
   userInfo.setAvatarImg({ avatar: user.avatar });
+  userInfo.setUserInfo({ name: user.name, about: user.about });
 });
+
 //
 
 // api.editUserInfo({ name, about: description }).then((userData) => {
@@ -197,12 +199,13 @@ const editAvatarValidator = new FormValidator(
 
 function handleProfileEditSubmit(inputValues) {
   console.log(inputValues);
-  userInfo.setUserInfo({
-    name: inputValues.title,
-    description: inputValues.description,
+  api.setUserInfo(inputvalues).then(() => {
+    userInfo.setUserInfo({
+      name: inputValues.title,
+      description: inputValues.description,
+    });
+    newProfileEdit.closeModal();
   });
-
-  newProfileEdit.closeModal();
 }
 
 function handleAvatarSubmit(inputValues) {
