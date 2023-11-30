@@ -64,6 +64,7 @@ const userInfo = new UserInfo(profileTitle, profileDescription, avatarEditImg);
 
 // delete confirmation modal
 const deletePopup = new PopupWithConfirmation("#delete-card-modal");
+deletePopup.setEventListeners();
 
 let section;
 
@@ -99,8 +100,6 @@ api.getUserInfo().then((user) => {
 // });
 //
 
-// api.likeCard();
-// api.removeLike();
 // api.deleteCard()
 
 /*-----------------------------------------------------------------*/
@@ -199,10 +198,10 @@ const editAvatarValidator = new FormValidator(
 
 function handleProfileEditSubmit(inputValues) {
   console.log(inputValues);
-  api.setUserInfo(inputvalues).then(() => {
+  api.editUserInfo(inputValues).then(() => {
     userInfo.setUserInfo({
       name: inputValues.title,
-      description: inputValues.description,
+      about: inputValues.description,
     });
     newProfileEdit.closeModal();
   });
@@ -224,10 +223,16 @@ function handleAddCardFormSubmit(inputValues) {
 }
 
 function handleDeleteClick(
-  data /* here we receive data about the card from Card.js */
+  card /* here we receive data about the card from Card.js */
 ) {
+  console.log(card);
   deletePopup.openModal();
-  deleteCardButton(data);
+  deletePopup._setConfirmation(() => {
+    api.remove(data).then((res) => {
+      card.removeCard();
+      deletePopup.closeModal();
+    });
+  });
   /**
    * the goal is to provide the data from the card we received here as an argument to the confirmation modal
    * that will allow you to send the remove request to the server with an exact card data you need
