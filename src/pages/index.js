@@ -246,15 +246,9 @@ function handleCardClick(name, link) {
   newImagePopup.openModal({ name, link });
 }
 
-// const avatarImage = document.getElementById("avatarImage");
-// if (avatarImage) {
-//   avatarImage.src = newAvatarUrl;
-// } else {
-//   console.error("Avatar image element not found");
-// }
-// avatarCloseButton.addEventListener("click", () => {
-//   newAvatarEdit.closeModal();
-// });
+avatarCloseButton.addEventListener("click", () => {
+  newAvatarEdit.closeModal();
+});
 
 /*-----------------------------------------------------------------*/
 /*                      Event Listeners                            */

@@ -17,6 +17,7 @@
 .profile__name {
   display: flex;
   gap: 10px;
+  padding-left: 10px;
 }
 
 .profile__align {
