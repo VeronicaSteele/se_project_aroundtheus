@@ -159,6 +159,10 @@
 .modal__input_type_error {
   border-bottom: 1px solid #ff0000;
 }
+.modal__delete-container {
+  height: 181px;
+  width: 430px;
+}
 
 @media screen and (max-width: 920px) {
   .modal__image-container {
