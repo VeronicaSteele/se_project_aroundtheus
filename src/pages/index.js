@@ -197,28 +197,34 @@ const editAvatarValidator = new FormValidator(
 /*-----------------------------------------------------------------*/
 
 function handleProfileEditSubmit(inputValues) {
+  newProfileEdit.setSaving(true);
   console.log(inputValues);
   api.editUserInfo(inputValues).then(() => {
     userInfo.setUserInfo({
       name: inputValues.title,
       about: inputValues.description,
     });
+    newProfileEdit.setSaving(false);
     newProfileEdit.closeModal();
   });
 }
 
 function handleAvatarSubmit(inputValues) {
+  newAvatarEdit.setSaving(true);
   api.updateAvatar(inputValues.link).then((user) => {
     userInfo.setAvatarImg(user);
+    newAvatarEdit.setSaving(false);
   });
   newAvatarEdit.closeModal();
 }
 
 function handleAddCardFormSubmit(inputValues) {
+  newCardPopup.setSaving(true);
   api.addNewCard(inputValues).then((card) => {
     const cardEl = renderCard(card);
     section.addItem(cardEl);
     newCardPopup.closeModal();
+    newCardPopup.setSaving(false);
   });
 }
 
