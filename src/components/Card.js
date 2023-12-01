@@ -22,7 +22,7 @@ export default class Card {
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
-        this._handleDeleteClick();
+        this._handleDeleteClick(this);
       });
     // Like button
     this._likeButton.addEventListener("click", () => {

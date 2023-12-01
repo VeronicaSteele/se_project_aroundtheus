@@ -222,24 +222,14 @@ function handleAddCardFormSubmit(inputValues) {
   });
 }
 
-function handleDeleteClick(
-  card /* here we receive data about the card from Card.js */
-) {
-  console.log(card);
+function handleDeleteClick(card) {
   deletePopup.openModal();
   deletePopup._setConfirmation(() => {
-    api.remove(data).then((res) => {
+    api.deleteCard(card._id).then(() => {
       card.removeCard();
       deletePopup.closeModal();
     });
   });
-  /**
-   * the goal is to provide the data from the card we received here as an argument to the confirmation modal
-   * that will allow you to send the remove request to the server with an exact card data you need
-   * plan:
-   * 1. make an API request to the server to remove the card
-   * 2. in the ".then" section to the previous request we need to delete the card from DOM
-   */
 }
 
 function handleCardClick(name, link) {
