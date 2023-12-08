@@ -7,45 +7,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/API.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
-
-/*-----------------------------------------------------------------*/
-/*                          Constants                              */
-/*-----------------------------------------------------------------*/
-
-const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileTitle = document.querySelector("#profile__title");
-const profileDescription = document.querySelector("#profile__description");
-const profileTitleInput = document.querySelector("#title-input");
-const profileDescriptionInput = document.querySelector("#profile-description");
-const profileEditForm = profileEditModal.querySelector(".modal__form");
-const cardTemplate = document
-  .querySelector("#card-template")
-  .content.querySelector(".card__list");
-const cardListEl = document.querySelector(".card__item");
-const addNewCardModal = document.querySelector("#add-card-modal");
-const addCardFormElement = addNewCardModal.querySelector("#add-card-form");
-const cardTitleInput = addCardFormElement.querySelector("#modal-add");
-const cardUrlInput = addCardFormElement.querySelector("#url-input");
-export const previewImageModal = document.querySelector("#view-card-modal");
-const imagePreview = previewImageModal.querySelector(
-  ".modal__image-container_popup"
-);
-const imageCaption = previewImageModal.querySelector(
-  ".modal__image-container_heading"
-);
-const avatar = document.querySelector("#avatar-url");
-const deleteCardModal = document.querySelector("#delete-card-modal");
-const avatarEditImg = document.querySelector(".profile__img");
-const editProfileForm = document.querySelector("#profile-edit-form");
-
-/*                           Buttons                               */
-
-const addNewCardButton = document.querySelector(".profile__add-button");
-const avatarEditButton = document.querySelector("#avatar-edit-button");
-const profileEditBtn = document.querySelector("#profile-edit-button");
-const avatarSaveButton = document.querySelector("#save-avatar-update");
-const deleteCardButton = document.querySelector(".card__delete-button"); // we don't use this variable
-const avatarCloseButton = document.querySelector("#avatar-modal-close-button");
+import Constants from "../../utils.js/constants.js";
 
 /*-----------------------------------------------------------------*/
 /*                             API                                 */
@@ -92,15 +54,6 @@ api.getUserInfo().then((user) => {
   userInfo.setAvatarImg({ avatar: user.avatar });
   userInfo.setUserInfo({ name: user.name, about: user.about });
 });
-
-//
-
-// api.editUserInfo({ name, about: description }).then((userData) => {
-//   userInfo.setUserInfo(userData.name, userData.description);
-// });
-//
-
-// api.deleteCard()
 
 /*-----------------------------------------------------------------*/
 /*                             Validation                          */
@@ -155,11 +108,6 @@ function handleLikeClick(card) {
       console.error(err);
     });
 }
-
-// need an if/else statement that checks whether the card is currently liked or not.
-//hint: isLiked is true then we want to tell the server to remove a like
-// else we tell the server to remove the like
-// when finished, (inside .then) update view of heart button
 
 //New Card Popup
 const newCardPopup = new PopupWithForm(

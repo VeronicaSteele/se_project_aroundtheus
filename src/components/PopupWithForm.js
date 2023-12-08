@@ -29,9 +29,9 @@ export default class PopupWithForm extends Popup {
 
     return inputValues;
   }
-  setSaving(isLoading) {
+  setSaving(isLoading, text = "Saving...") {
     if (isLoading) {
-      this._saveButton.textContent = "Saving...";
+      this._saveButton.textContent = text;
     } else {
       this._saveButton.textContent = this._saveButtonText;
     }
