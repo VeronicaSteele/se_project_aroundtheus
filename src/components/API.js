@@ -76,9 +76,5 @@ export default class Api {
         avatar: image,
       }),
     });
-    // .catch((error) => {
-    //   console.error("Error updating avatar:", error);
-    //   throw error;
-    // });
   }
 }

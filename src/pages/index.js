@@ -7,7 +7,34 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/API.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
-import Constants from "../../utils.js/constants.js";
+import {
+  profileEditModal,
+  profileTitle,
+  profileDescription,
+  profileTitleInput,
+  profileDescriptionInput,
+  profileEditForm,
+  cardTemplate,
+  cardListEl,
+  addNewCardModal,
+  addCardFormElement,
+  cardTitleInput,
+  cardUrlInput,
+  previewImageModal,
+  imagePreview,
+  imageCaption,
+  avatar,
+  deleteCardModal,
+  avatarEditImg,
+  editProfileForm,
+  addNewCardButton,
+  avatarEditButton,
+  profileEditBtn,
+  avatarSaveButton,
+  deleteCardButton,
+  avatarCloseButton,
+  avatarForm,
+} from "../utils/constants.js";
 
 /*-----------------------------------------------------------------*/
 /*                             API                                 */
@@ -137,8 +164,10 @@ avatarEditButton.addEventListener("click", () => {
 });
 const editAvatarValidator = new FormValidator(
   validationSettings,
-  editProfileForm
+  avatarForm
+  //is this where the validation gets tied in?
 );
+editAvatarValidator.enableValidation();
 
 /*-----------------------------------------------------------------*/
 /*                   "Handle" Functions                            */
@@ -147,42 +176,63 @@ const editAvatarValidator = new FormValidator(
 function handleProfileEditSubmit(inputValues) {
   newProfileEdit.setSaving(true);
   console.log(inputValues);
-  api.editUserInfo(inputValues).then(() => {
-    userInfo.setUserInfo({
-      name: inputValues.title,
-      about: inputValues.description,
+  api
+    .editUserInfo(inputValues)
+    .then(() => {
+      userInfo.setUserInfo({
+        name: inputValues.title,
+        about: inputValues.description,
+      });
+      newProfileEdit.setSaving(false);
+      newProfileEdit.closeModal();
+    })
+    .catch((err) => {
+      console.error(err);
     });
-    newProfileEdit.setSaving(false);
-    newProfileEdit.closeModal();
-  });
 }
 
 function handleAvatarSubmit(inputValues) {
   newAvatarEdit.setSaving(true);
-  api.updateAvatar(inputValues.link).then((user) => {
-    userInfo.setAvatarImg(user);
-    newAvatarEdit.setSaving(false);
-  });
+  api
+    .updateAvatar(inputValues.link)
+    .then((user) => {
+      userInfo.setAvatarImg(user);
+      newAvatarEdit.setSaving(false);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
   newAvatarEdit.closeModal();
 }
 
 function handleAddCardFormSubmit(inputValues) {
   newCardPopup.setSaving(true);
-  api.addNewCard(inputValues).then((card) => {
-    const cardEl = renderCard(card);
-    section.addItem(cardEl);
-    newCardPopup.closeModal();
-    newCardPopup.setSaving(false);
-  });
+  api
+    .addNewCard(inputValues)
+    .then((card) => {
+      const cardEl = renderCard(card);
+      section.addItem(cardEl);
+      newCardPopup.closeModal();
+      newCardPopup.setSaving(false);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
 
 function handleDeleteClick(card) {
   deletePopup.openModal();
   deletePopup._setConfirmation(() => {
-    api.deleteCard(card._id).then(() => {
-      card.removeCard();
-      deletePopup.closeModal();
-    });
+    api
+      .deleteCard(card._id)
+      .then(() => {
+        card.removeCard();
+        deletePopup.closeModal();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   });
 }
 
