@@ -243,6 +243,8 @@ function handleCardClick(name, link) {
 avatarCloseButton.addEventListener("click", () => {
   newAvatarEdit.closeModal();
 });
+console.log("test");
+newAvatarEdit.setEventListeners();
 
 /*-----------------------------------------------------------------*/
 /*                      Event Listeners                            */
