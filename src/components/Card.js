@@ -29,11 +29,9 @@ export default class Card {
       this._handleLikeClick(this);
     });
 
-    this._cardElement
-      .querySelector(".card__image")
-      .addEventListener("click", () => {
-        this._handleCardClick(this._name, this._link);
-      });
+    this._cardImage.addEventListener("click", () => {
+      this._handleCardClick(this._name, this._link);
+    });
   }
 
   updateLikes(isLiked) {
