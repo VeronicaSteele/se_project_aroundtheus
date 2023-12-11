@@ -124,7 +124,7 @@ function renderCard(data) {
 }
 
 function handleLikeClick(card) {
-  const action = card._isLiked
+  const action = card.isLiked
     ? api.removeLike.bind(api)
     : api.likeCard.bind(api);
   action(card._id)
@@ -162,11 +162,7 @@ const newAvatarEdit = new PopupWithForm(
 avatarEditButton.addEventListener("click", () => {
   newAvatarEdit.openModal();
 });
-const editAvatarValidator = new FormValidator(
-  validationSettings,
-  avatarForm
-  //is this where the validation gets tied in?
-);
+const editAvatarValidator = new FormValidator(validationSettings, avatarForm);
 editAvatarValidator.enableValidation();
 
 /*-----------------------------------------------------------------*/
@@ -198,12 +194,11 @@ function handleAvatarSubmit(inputValues) {
     .then((user) => {
       userInfo.setAvatarImg(user);
       newAvatarEdit.setSaving(false);
+      newAvatarEdit.closeModal();
     })
     .catch((err) => {
       console.error(err);
     });
-
-  newAvatarEdit.closeModal();
 }
 
 function handleAddCardFormSubmit(inputValues) {
@@ -243,7 +238,7 @@ function handleCardClick(name, link) {
 avatarCloseButton.addEventListener("click", () => {
   newAvatarEdit.closeModal();
 });
-console.log("test");
+
 newAvatarEdit.setEventListeners();
 
 /*-----------------------------------------------------------------*/
