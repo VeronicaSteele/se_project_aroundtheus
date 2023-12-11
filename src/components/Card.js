@@ -13,7 +13,7 @@ export default class Card {
     this._handleDeleteClick = handleDeleteClick;
     this._handleLikeClick = handleLikeClick;
     this._id = data._id;
-    this._isLiked = data.isLiked;
+    this.isLiked = data.isLiked;
     //console.log("data", data._id);
   }
 
@@ -35,12 +35,12 @@ export default class Card {
   }
 
   updateLikes(isLiked) {
-    this._isLiked = isLiked;
+    this.isLiked = isLiked;
     this.renderLikes();
   }
 
   renderLikes() {
-    if (this._isLiked) {
+    if (this.isLiked) {
       this._likeButton.classList.add("card__like-button_active");
     } else {
       this._likeButton.classList.remove("card__like-button_active");
