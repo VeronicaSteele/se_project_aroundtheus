@@ -6,7 +6,7 @@ export default class PopupWithConfirmation extends Popup {
     this._deletePopup = this._popupElement.querySelector(".modal__form");
   }
 
-  _setConfirmation(action) {
+  setConfirmation(action) {
     this._handleFormSubmit = action;
   }
 

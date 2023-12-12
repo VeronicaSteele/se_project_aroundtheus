@@ -44,6 +44,7 @@ import {
   newCardPopup,
   newProfileEdit,
   newAvatarEdit,
+  newAvatarValidator,
 } from "../utils/constants.js";
 
 /*-----------------------------------------------------------------*/
@@ -130,10 +131,10 @@ newProfileEdit.setEventListeners();
 
 avatarEditButton.addEventListener("click", () => {
   newAvatarEdit.openModal();
-  newAvatarEdit.resetValidation();
 });
-const editAvatarValidator = new FormValidator(validationSettings, avatarForm);
+
 editAvatarValidator.enableValidation();
+editAvatarValidator.resetValidation();
 
 /*-----------------------------------------------------------------*/
 /*                   "Handle" Functions                            */
@@ -188,7 +189,7 @@ export function handleAddCardFormSubmit(inputValues) {
 
 function handleDeleteClick(card) {
   deletePopup.openModal();
-  deletePopup._setConfirmation(() => {
+  deletePopup.setConfirmation(() => {
     api
       .deleteCard(card._id)
       .then(() => {
@@ -205,9 +206,9 @@ function handleCardClick(name, link) {
   newImagePopup.openModal({ name, link });
 }
 
-avatarCloseButton.addEventListener("click", () => {
-  newAvatarEdit.closeModal();
-});
+// avatarCloseButton.addEventListener("click", () => {
+//   newAvatarEdit.closeModal();
+// });
 
 newAvatarEdit.setEventListeners();
 deletePopup.setEventListeners();

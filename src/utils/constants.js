@@ -95,6 +95,7 @@ const newAvatarEdit = new PopupWithForm(
   "#edit-avatar-modal",
   handleAvatarSubmit
 );
+const editAvatarValidator = new FormValidator(validationSettings, avatarForm);
 
 export {
   profileEditModal,
@@ -133,4 +134,5 @@ export {
   newCardPopup,
   newProfileEdit,
   newAvatarEdit,
+  newAvatarValidator,
 };
