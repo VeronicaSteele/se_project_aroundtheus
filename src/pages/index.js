@@ -34,27 +34,21 @@ import {
   //deleteCardButton,
   avatarCloseButton,
   avatarForm,
+  validationSettings,
+  api,
+  userInfo,
+  deletePopup,
+  editProfileFormValidator,
+  addCardFormValidator,
+  newImagePopup,
+  newCardPopup,
+  newProfileEdit,
+  newAvatarEdit,
 } from "../utils/constants.js";
 
 /*-----------------------------------------------------------------*/
 /*                             API                                 */
 /*-----------------------------------------------------------------*/
-
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "9998c541-50a6-4c3b-9b08-c9921babcb2b",
-    "Content-Type": "application/json",
-  },
-});
-
-// UserInfo
-const userInfo = new UserInfo(profileTitle, profileDescription, avatarEditImg);
-
-// delete confirmation modal
-const deletePopup = new PopupWithConfirmation("#delete-card-modal");
-deletePopup.setEventListeners();
-
 let section;
 
 api
@@ -86,31 +80,15 @@ api.getUserInfo().then((user) => {
 /*                             Validation                          */
 /*-----------------------------------------------------------------*/
 
-const validationSettings = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
-
-const editProfileFormValidator = new FormValidator(
-  validationSettings,
-  editProfileForm
-);
 editProfileFormValidator.enableValidation();
 
-const addCardFormValidator = new FormValidator(
-  validationSettings,
-  addCardFormElement
-);
 addCardFormValidator.enableValidation();
 /*-----------------------------------------------------------------*/
 /*                             New Instances                       */
 /*-----------------------------------------------------------------*/
 
 //New Image Popup
-const newImagePopup = new PopupWithImage("#view-card-modal");
+
 newImagePopup.setEventListeners();
 function renderCard(data) {
   const card = new Card(
@@ -137,10 +115,7 @@ function handleLikeClick(card) {
 }
 
 //New Card Popup
-const newCardPopup = new PopupWithForm(
-  "#add-card-modal",
-  handleAddCardFormSubmit
-);
+
 newCardPopup.setEventListeners();
 addNewCardButton.addEventListener("click", () => {
   addCardFormValidator.resetValidation();
@@ -148,19 +123,14 @@ addNewCardButton.addEventListener("click", () => {
 });
 
 //Profile Edit Popup
-const newProfileEdit = new PopupWithForm(
-  "#profile-edit-modal",
-  handleProfileEditSubmit
-);
+
 newProfileEdit.setEventListeners();
 
 //Avatar Edit Popup
-const newAvatarEdit = new PopupWithForm(
-  "#edit-avatar-modal",
-  handleAvatarSubmit
-);
+
 avatarEditButton.addEventListener("click", () => {
   newAvatarEdit.openModal();
+  newAvatarEdit.resetValidation();
 });
 const editAvatarValidator = new FormValidator(validationSettings, avatarForm);
 editAvatarValidator.enableValidation();
@@ -169,7 +139,7 @@ editAvatarValidator.enableValidation();
 /*                   "Handle" Functions                            */
 /*-----------------------------------------------------------------*/
 
-function handleProfileEditSubmit(inputValues) {
+export function handleProfileEditSubmit(inputValues) {
   newProfileEdit.setSaving(true);
   console.log(inputValues);
   api
@@ -187,7 +157,7 @@ function handleProfileEditSubmit(inputValues) {
     });
 }
 
-function handleAvatarSubmit(inputValues) {
+export function handleAvatarSubmit(inputValues) {
   newAvatarEdit.setSaving(true);
   api
     .updateAvatar(inputValues.link)
@@ -201,7 +171,7 @@ function handleAvatarSubmit(inputValues) {
     });
 }
 
-function handleAddCardFormSubmit(inputValues) {
+export function handleAddCardFormSubmit(inputValues) {
   newCardPopup.setSaving(true);
   api
     .addNewCard(inputValues)
@@ -240,6 +210,7 @@ avatarCloseButton.addEventListener("click", () => {
 });
 
 newAvatarEdit.setEventListeners();
+deletePopup.setEventListeners();
 
 /*-----------------------------------------------------------------*/
 /*                      Event Listeners                            */
