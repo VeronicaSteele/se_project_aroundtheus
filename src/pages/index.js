@@ -35,22 +35,30 @@ import {
   avatarCloseButton,
   avatarForm,
   validationSettings,
-  api,
-  userInfo,
-  deletePopup,
-  editProfileFormValidator,
-  addCardFormValidator,
-  newImagePopup,
-  newCardPopup,
-  newProfileEdit,
-  newAvatarEdit,
-  newAvatarValidator,
+
+  // userInfo,
+  // deletePopup,
+  // editProfileFormValidator,
+  // addCardFormValidator,
+  // newImagePopup,
+  // newCardPopup,
+  // newProfileEdit,
+  // newAvatarEdit,
+  // editAvatarValidator,
 } from "../utils/constants.js";
 
 /*-----------------------------------------------------------------*/
 /*                             API                                 */
 /*-----------------------------------------------------------------*/
 let section;
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "9998c541-50a6-4c3b-9b08-c9921babcb2b",
+    "Content-Type": "application/json",
+  },
+});
 
 api
   .getInitialCards()
@@ -78,17 +86,49 @@ api.getUserInfo().then((user) => {
 });
 
 /*-----------------------------------------------------------------*/
+/*                             New Instances                       */
+/*-----------------------------------------------------------------*/
+
+const userInfo = new UserInfo(profileTitle, profileDescription, avatarEditImg);
+
+const deletePopup = new PopupWithConfirmation("#delete-card-modal");
+
+const editProfileFormValidator = new FormValidator(
+  validationSettings,
+  editProfileForm
+);
+
+const addCardFormValidator = new FormValidator(
+  validationSettings,
+  addCardFormElement
+);
+
+const newImagePopup = new PopupWithImage("#view-card-modal");
+
+const newCardPopup = new PopupWithForm(
+  "#add-card-modal",
+  handleAddCardFormSubmit
+);
+
+const newProfileEdit = new PopupWithForm(
+  "#profile-edit-modal",
+  handleProfileEditSubmit
+);
+
+const newAvatarEdit = new PopupWithForm(
+  "#edit-avatar-modal",
+  handleAvatarSubmit
+);
+const editAvatarValidator = new FormValidator(validationSettings, avatarForm);
+
+/*-----------------------------------------------------------------*/
 /*                             Validation                          */
 /*-----------------------------------------------------------------*/
 
 editProfileFormValidator.enableValidation();
+editProfileFormValidator.resetValidation();
 
 addCardFormValidator.enableValidation();
-/*-----------------------------------------------------------------*/
-/*                             New Instances                       */
-/*-----------------------------------------------------------------*/
-
-//New Image Popup
 
 newImagePopup.setEventListeners();
 function renderCard(data) {
@@ -150,11 +190,13 @@ export function handleProfileEditSubmit(inputValues) {
         name: inputValues.title,
         about: inputValues.description,
       });
-      newProfileEdit.setSaving(false);
       newProfileEdit.closeModal();
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      newProfileEdit.setSaving(false);
     });
 }
 
@@ -169,6 +211,9 @@ export function handleAvatarSubmit(inputValues) {
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      newAvatarEdit.setSaving(false);
     });
 }
 
@@ -184,6 +229,9 @@ export function handleAddCardFormSubmit(inputValues) {
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      newCardPopup.setSaving(false);
     });
 }
 

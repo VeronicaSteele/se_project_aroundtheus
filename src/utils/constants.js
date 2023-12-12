@@ -57,46 +57,6 @@ const validationSettings = {
   errorClass: "modal__error_visible",
 };
 
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "9998c541-50a6-4c3b-9b08-c9921babcb2b",
-    "Content-Type": "application/json",
-  },
-});
-
-const userInfo = new UserInfo(profileTitle, profileDescription, avatarEditImg);
-
-const deletePopup = new PopupWithConfirmation("#delete-card-modal");
-
-const editProfileFormValidator = new FormValidator(
-  validationSettings,
-  editProfileForm
-);
-
-const addCardFormValidator = new FormValidator(
-  validationSettings,
-  addCardFormElement
-);
-
-const newImagePopup = new PopupWithImage("#view-card-modal");
-
-const newCardPopup = new PopupWithForm(
-  "#add-card-modal",
-  handleAddCardFormSubmit
-);
-
-const newProfileEdit = new PopupWithForm(
-  "#profile-edit-modal",
-  handleProfileEditSubmit
-);
-
-const newAvatarEdit = new PopupWithForm(
-  "#edit-avatar-modal",
-  handleAvatarSubmit
-);
-const editAvatarValidator = new FormValidator(validationSettings, avatarForm);
-
 export {
   profileEditModal,
   profileTitle,
@@ -125,14 +85,14 @@ export {
   avatarCloseButton,
   avatarForm,
   validationSettings,
-  api,
-  userInfo,
-  deletePopup,
-  editProfileFormValidator,
-  addCardFormValidator,
-  newImagePopup,
-  newCardPopup,
-  newProfileEdit,
-  newAvatarEdit,
-  newAvatarValidator,
+
+  // userInfo,
+  // deletePopup,
+  // editProfileFormValidator,
+  // addCardFormValidator,
+  // newImagePopup,
+  // newCardPopup,
+  // newProfileEdit,
+  // newAvatarEdit,
+  // editAvatarValidator,
 };
