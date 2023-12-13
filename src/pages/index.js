@@ -206,7 +206,6 @@ export function handleAvatarSubmit(inputValues) {
     .updateAvatar(inputValues.link)
     .then((user) => {
       userInfo.setAvatarImg(user);
-      newAvatarEdit.setSaving(false);
       newAvatarEdit.closeModal();
     })
     .catch((err) => {
@@ -270,3 +269,4 @@ profileEditBtn.addEventListener("click", () => {
   profileDescriptionInput.value = userData.description.trim();
   newProfileEdit.openModal();
 });
+newProfileEdit.resetValidation();
