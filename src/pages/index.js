@@ -273,4 +273,3 @@ profileEditBtn.addEventListener("click", () => {
   profileDescriptionInput.value = userData.description.trim();
   newProfileEdit.openModal();
 });
-newProfileEdit.resetValidation();
