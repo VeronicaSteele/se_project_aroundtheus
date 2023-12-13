@@ -80,10 +80,15 @@ api
     console.error(error);
   });
 //
-api.getUserInfo().then((user) => {
-  userInfo.setAvatarImg({ avatar: user.avatar });
-  userInfo.setUserInfo({ name: user.name, about: user.about });
-});
+api
+  .getUserInfo()
+  .then((user) => {
+    userInfo.setAvatarImg({ avatar: user.avatar });
+    userInfo.setUserInfo({ name: user.name, about: user.about });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 /*-----------------------------------------------------------------*/
 /*                             New Instances                       */
@@ -224,7 +229,6 @@ export function handleAddCardFormSubmit(inputValues) {
       const cardEl = renderCard(card);
       section.addItem(cardEl);
       newCardPopup.closeModal();
-      newCardPopup.setSaving(false);
     })
     .catch((err) => {
       console.error(err);
