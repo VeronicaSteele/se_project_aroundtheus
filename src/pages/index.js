@@ -131,7 +131,6 @@ const editAvatarValidator = new FormValidator(validationSettings, avatarForm);
 /*-----------------------------------------------------------------*/
 
 editProfileFormValidator.enableValidation();
-editProfileFormValidator.resetValidation();
 
 addCardFormValidator.enableValidation();
 
@@ -175,11 +174,11 @@ newProfileEdit.setEventListeners();
 //Avatar Edit Popup
 
 avatarEditButton.addEventListener("click", () => {
+  editAvatarValidator.resetValidation();
   newAvatarEdit.openModal();
 });
 
 editAvatarValidator.enableValidation();
-editAvatarValidator.resetValidation();
 
 /*-----------------------------------------------------------------*/
 /*                   "Handle" Functions                            */
@@ -257,10 +256,6 @@ function handleCardClick(name, link) {
   newImagePopup.openModal({ name, link });
 }
 
-// avatarCloseButton.addEventListener("click", () => {
-//   newAvatarEdit.closeModal();
-// });
-
 newAvatarEdit.setEventListeners();
 deletePopup.setEventListeners();
 
@@ -271,5 +266,6 @@ profileEditBtn.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
   profileTitleInput.value = userData.name.trim();
   profileDescriptionInput.value = userData.description.trim();
+  editProfileFormValidator.resetValidation();
   newProfileEdit.openModal();
 });
